@@ -8,6 +8,12 @@ define('APP_PATH', BASE_PATH . '/app');
 
 try {
 
+    include APP_PATH . '/library/vendor/autoload.php';
+
+    $dotenv = Dotenv\Dotenv::createImmutable(BASE_PATH);
+    $dotenv->load();
+    
+
     /**
      * The FactoryDefault Dependency Injector automatically registers
      * the services that provide a full stack framework.
@@ -33,6 +39,9 @@ try {
      * Include Autoloader
      */
     include APP_PATH . '/config/loader.php';
+
+    
+
 
     /**
      * Handle the request
