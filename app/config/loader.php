@@ -8,7 +8,8 @@ $loader->registerFiles([ $config->application->libraryDir . '/vendor/autoload.ph
 $loader->registerDirs(
     [
         $config->application->controllersDir,
-        $config->application->modelsDir
+        $config->application->modelsDir,
+        $config->application->servicesDir
     ]
 )->register();
 
