@@ -5,17 +5,22 @@ class SessionController extends ControllerBase
 {
     private $SESSION_NAME = "cooperemosapp";
 
-    private function _registerSession($user)
+    private function _registerSession($identityUser)
 	{		
-        $user_role = IdentityRole::findFirstById($user->IdentityRoleId);
-        
+
+        $user = new User();
+
+        $user->IdentityUser = $identityUser;
+        $user->Name = "Brayan";
+        $user->Id = $identityUser->Id;
+
 		$this->session->set(
 				$this->SESSION_NAME,
 				[
-					'id_user'		=> $user->Id,
-                    'name'			=> $user->Name,
-                    'role_key'      => $user_role->KeyName,
-					'role_name'     => $user_role->Name	
+					'UserId'   => $user->Id,
+                    'Name'	   => $user->Name,
+                    'RoleKey'  => $user->IdentityUser->IdentityRole->KeyName,
+					'RoleName' => $user->IdentityUser->IdentityRole->Name
                 ]
         );		
 	}
@@ -27,13 +32,14 @@ class SessionController extends ControllerBase
 	{
         if ($this->request->isPost()) {	
 			$email    = $this->request->getPost('email');
-			$password = $this->request->getPost('password');
-			$user = IdentityUser::findFirst(
+            $password = $this->request->getPost('password');
+
+            $user = IdentityUser::findFirst(
                 array(
-                        "(Email = :email:) AND Password = :password:",
+                        "(Email = :email:) AND PasswordHash = :password:",
                         'bind' => array(
                                 'email'    => $email,
-                                'password' => sha1($password),
+                                'password' => Utils::Hash()->encrypt($password),
                     )
                 )
             );
@@ -92,7 +98,7 @@ class SessionController extends ControllerBase
     }
 
     private function UpdateUserSignIn($user){
-        $user->LastConnectionDate = Utilities::GetDate();
+        $user->LastConnectionDate = Utils::Date()->getDate();
         $user->save();
     }
 
