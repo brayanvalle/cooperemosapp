@@ -11,7 +11,7 @@ class SessionController extends ControllerBase
         $user = new User();
 
         $user->IdentityUser = $identityUser;
-        $user->Name = "Brayan";
+        $user->Name = $identityUser->DisplayName;
         $user->Id = $identityUser->Id;
 
 		$this->session->set(
@@ -30,7 +30,9 @@ class SessionController extends ControllerBase
 
 	public function indexAction()
 	{
+        print("hsdjsdsdlsd");
         if ($this->request->isPost()) {	
+
 			$email    = $this->request->getPost('email');
             $password = $this->request->getPost('password');
 
@@ -83,11 +85,10 @@ class SessionController extends ControllerBase
 
     public function loginAction()
     {       
-
     }
 
     public function logoutAction(){
-    	$this->_unregisterSession();
+        $this->session->remove($this->SESSION_NAME);
     	return $this->dispatcher->forward(
     			array(
     					'controller' => 'session',

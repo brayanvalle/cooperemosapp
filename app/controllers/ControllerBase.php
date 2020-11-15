@@ -18,7 +18,8 @@ class ControllerBase extends Controller
     private function handleSession()
     {         
         header('Content-Type: text/html; charset=utf-8');        
-        $SESSION = "nicooperationapp";        
+        $SESSION = "cooperemosapp";     
+        
         if(!$this->session->get($SESSION)){            
             $actual_link = "$_SERVER[REQUEST_URI]";      
 
@@ -39,6 +40,7 @@ class ControllerBase extends Controller
             ->collection('headercss')
             ->addCss('css/app.css')
             ->addCss('css/main.css')
+            ->addCss('css/post/main.css')
             ->addCss('css/session/login.css');
 
         // $this->assets

@@ -1,0 +1,27 @@
+.post-avatar-img{
+    height: 3rem;
+}
+
+.post-feed-author{
+    display: flex;
+}
+
+.author-iinfo{
+    display: inline;
+}
+
+.author-name{
+    margin: 0;
+}
+
+.author-description, .post-date{
+    margin: 0;
+}
+
+.post-date{
+    font-size: 13px;
+}
+
+.post-feed-resumen > p:nth-child(n+3){
+    display:none;
+}

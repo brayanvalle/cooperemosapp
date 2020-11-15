@@ -1,1 +1,39 @@
-<h1>test</h1>
+<?php if(count($page->items) > 0){ ?>
+  <?php 
+      foreach($page->items as $post): ?>        
+        <section class="my-3">
+          <div class="row">
+            <div class="col-md-6 col-lg-4">
+              <div class="card news-card">
+                <div class="card-body">
+                  <div class="content post-feed-author">
+                    <img class="rounded-circle post-avatar-img" src="https://mdbootstrap.com/img/Photos/Avatars/img%20(3).jpg">      
+
+                    <div class="author-info">
+                      <h5 class="author-name ml-2"><?php echo $post->IdentityUser->DisplayName ?></h5>
+                      <p class="author-description ml-2">Estudiante | Ingeniería informática</p>
+                      <p class="post-date ml-2">Hace 2 horas</p>
+                    </div>                  
+                  </div>
+
+                  <div class="content post-feed-resumen mt-2">
+                    <?php echo $post->Body ?>
+                  </div>
+                </div>
+                <div class="card-body">                  
+                  <div class="social-meta">
+                    <p class="blue-text">#awesome #bboy #battle #breaking #cool</p>
+                    <div class="social-counter float-right">
+                      <i class="far fa-heart fa-lg"><span class="ml-2">12</span></i>
+                      <i class="far fa-share-square fa-lg ml-3"><span class="ml-2">3</span></i>
+                    </div>           
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+  <?php endforeach; ?>
+<?php } ?> 
+
+
