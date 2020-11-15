@@ -7,7 +7,7 @@ class Hash{
     }
 
     public static function encrypt($text){
-        return sha1($password);
+        return sha1($text);
     }
 
     public static function compare($original , $encripted){

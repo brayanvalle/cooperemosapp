@@ -77,6 +77,7 @@ class SessionController extends ControllerBase
 
     public function loginAction()
     {       
+
     }
 
     public function logoutAction(){

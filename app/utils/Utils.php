@@ -2,6 +2,10 @@
 
 class Utils{
 
+    public static function Error(): AppError{
+        return new AppError();
+    }
+
     public static function Hash(): Hash{
         return new Hash();
     }

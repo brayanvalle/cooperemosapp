@@ -1,7 +1,4 @@
 <?php
-
-
-
 class PostEntry extends \Phalcon\Mvc\Model
 {
 
@@ -51,13 +48,13 @@ class PostEntry extends \Phalcon\Mvc\Model
      *
      * @var integer
      */
-    public $CreatedByUserId;
+    public $XreatedByUserId;
 
     /**
      *
      * @var string
      */
-    public $CreationDate;
+    public $XreationDate;
 
     /**
      *
@@ -79,7 +76,7 @@ class PostEntry extends \Phalcon\Mvc\Model
         $this->setSchema("cooperemosappdb");
         $this->setSource("post_entry");
         $this->hasMany('Id', 'PostUserInteraction', 'PostEntryId', ['alias' => 'PostUserInteraction']);
-        $this->belongsTo('Id', 'entityUser', 'Id', ['alias' => 'IdentityUser']);
+        $this->belongsTo('CreatedByUserId', 'IdentityUser', 'Id', ['alias' => 'IdentityUser']);
     }
 
     /**
