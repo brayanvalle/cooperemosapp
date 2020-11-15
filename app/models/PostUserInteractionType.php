@@ -30,7 +30,7 @@ class PostUserInteractionType extends \Phalcon\Mvc\Model
     {
         $this->setSchema("cooperemosappdb");
         $this->setSource("post_user_interaction_type");
-        $this->hasMany('Id', 'stUserInteraction', 'PostUserInteractionTypeId', ['alias' => 'PostUserInteraction']);
+        $this->hasMany('Id', 'PostUserInteraction', 'PostUserInteractionTypeId', ['alias' => 'PostUserInteraction']);
     }
 
     /**

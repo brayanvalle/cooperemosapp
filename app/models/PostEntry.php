@@ -78,7 +78,7 @@ class PostEntry extends \Phalcon\Mvc\Model
     {
         $this->setSchema("cooperemosappdb");
         $this->setSource("post_entry");
-        $this->hasMany('Id', 'stUserInteraction', 'PostEntryId', ['alias' => 'PostUserInteraction']);
+        $this->hasMany('Id', 'PostUserInteraction', 'PostEntryId', ['alias' => 'PostUserInteraction']);
         $this->belongsTo('Id', 'entityUser', 'Id', ['alias' => 'IdentityUser']);
     }
 

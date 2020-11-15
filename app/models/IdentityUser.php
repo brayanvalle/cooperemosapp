@@ -90,12 +90,12 @@ class IdentityUser extends \Phalcon\Mvc\Model
     {
         $this->setSchema("cooperemosappdb");
         $this->setSource("identity_user");
-        $this->hasMany('Id', 'uginGamePostInteraction', 'IdentityUserId', ['alias' => 'PluginGamePostInteraction']);
-        $this->hasMany('Id', 'stEntry', 'Id', ['alias' => 'PostEntry']);
-        $this->hasMany('Id', 'stUserInteraction', 'IdentityUserId', ['alias' => 'PostUserInteraction']);
-        $this->hasMany('Id', 'erSubscription', 'IdentityUserId', ['alias' => 'UserSubscription']);
-        $this->hasMany('Id', 'erSubscription', 'SubscribedToUserId', ['alias' => 'UserSubscription']);
-        $this->belongsTo('IdentityRoleId', 'entityRole', 'Id', ['alias' => 'IdentityRole']);
+        $this->hasMany('Id', 'PluginGamePostInteraction', 'IdentityUserId', ['alias' => 'PluginGamePostInteraction']);
+        $this->hasMany('Id', 'PostEntry', 'Id', ['alias' => 'PostEntry']);
+        $this->hasMany('Id', 'PostUserInteraction', 'IdentityUserId', ['alias' => 'PostUserInteraction']);
+        $this->hasMany('Id', 'UserSubscription', 'IdentityUserId', ['alias' => 'UserSubscription']);
+        $this->hasMany('Id', 'UserSubscription', 'SubscribedToUserId', ['alias' => 'UserSubscription']);
+        $this->belongsTo('IdentityRoleId', 'IdentityRole', 'Id', ['alias' => 'IdentityRole']);
     }
 
     /**

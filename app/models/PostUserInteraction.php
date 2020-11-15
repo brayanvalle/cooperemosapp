@@ -42,9 +42,9 @@ class PostUserInteraction extends \Phalcon\Mvc\Model
     {
         $this->setSchema("cooperemosappdb");
         $this->setSource("post_user_interaction");
-        $this->belongsTo('IdentityUserId', 'entityUser', 'Id', ['alias' => 'IdentityUser']);
-        $this->belongsTo('PostEntryId', 'stEntry', 'Id', ['alias' => 'PostEntry']);
-        $this->belongsTo('PostUserInteractionTypeId', 'stUserInteractionType', 'Id', ['alias' => 'PostUserInteractionType']);
+        $this->belongsTo('IdentityUserId', 'IdentityUser', 'Id', ['alias' => 'IdentityUser']);
+        $this->belongsTo('PostEntryId', 'PostEntry', 'Id', ['alias' => 'PostEntry']);
+        $this->belongsTo('PostUserInteractionTypeId', 'PostUserInteractionType', 'Id', ['alias' => 'PostUserInteractionType']);
     }
 
     /**

@@ -2,9 +2,11 @@
 
 class UserService{
 
-    public function createUser(){
-
-        $user = new IdentityUser();
+    public function createUser(IdentityUser $user){
+        
+        $identityUser = new IdentityUser();
+        
+        $user->save();
     }
 }
 

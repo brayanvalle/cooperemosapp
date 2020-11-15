@@ -36,8 +36,8 @@ class UserSubscription extends \Phalcon\Mvc\Model
     {
         $this->setSchema("cooperemosappdb");
         $this->setSource("user_subscription");
-        $this->belongsTo('IdentityUserId', 'entityUser', 'Id', ['alias' => 'IdentityUser']);
-        $this->belongsTo('SubscribedToUserId', 'entityUser', 'Id', ['alias' => 'IdentityUser']);
+        $this->belongsTo('IdentityUserId', 'IdentityUser', 'Id', ['alias' => 'IdentityUser']);
+        $this->belongsTo('SubscribedToUserId', 'IdentityUser', 'Id', ['alias' => 'IdentityUser']);
     }
 
     /**

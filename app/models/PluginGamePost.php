@@ -78,8 +78,8 @@ class PluginGamePost extends \Phalcon\Mvc\Model
     {
         $this->setSchema("cooperemosappdb");
         $this->setSource("plugin_game_post");
-        $this->hasMany('Id', 'uginGamePostInteraction', 'PluginGameId', ['alias' => 'PluginGamePostInteraction']);
-        $this->belongsTo('PluginId', 'ugin', 'Id', ['alias' => 'Plugin']);
+        $this->hasMany('Id', 'PluginGamePostInteraction', 'PluginGameId', ['alias' => 'PluginGamePostInteraction']);
+        $this->belongsTo('PluginId', 'Plugin', 'Id', ['alias' => 'Plugin']);
     }
 
     /**
