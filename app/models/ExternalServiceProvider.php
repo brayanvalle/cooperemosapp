@@ -2,7 +2,7 @@
 
 
 
-class IdentityRole extends \Phalcon\Mvc\Model
+class ExternalServiceProvider extends \Phalcon\Mvc\Model
 {
 
     /**
@@ -15,7 +15,19 @@ class IdentityRole extends \Phalcon\Mvc\Model
      *
      * @var string
      */
-    public $keyName;
+    public $hashId;
+
+    /**
+     *
+     * @var string
+     */
+    public $token;
+
+    /**
+     *
+     * @var string
+     */
+    public $apiUrl;
 
     /**
      *
@@ -29,8 +41,8 @@ class IdentityRole extends \Phalcon\Mvc\Model
     public function initialize()
     {
         $this->setSchema("cooperemosappdb");
-        $this->setSource("identity_role");
-        $this->hasMany('Id', 'IdentityUser', 'IdentityRoleId', ['alias' => 'IdentityUser']);
+        $this->setSource("external_service_provider");
+        $this->hasMany('Id', 'ugin', 'ExternalServiceProviderId', ['alias' => 'Plugin']);
     }
 
     /**
@@ -40,14 +52,14 @@ class IdentityRole extends \Phalcon\Mvc\Model
      */
     public function getSource()
     {
-        return 'identity_role';
+        return 'external_service_provider';
     }
 
     /**
      * Allows to query a set of records that match the specified conditions
      *
      * @param mixed $parameters
-     * @return IdentityRole[]|IdentityRole|\Phalcon\Mvc\Model\ResultSetInterface
+     * @return ExternalServiceProvider[]|ExternalServiceProvider|\Phalcon\Mvc\Model\ResultSetInterface
      */
     public static function find($parameters = null)
     {
@@ -58,7 +70,7 @@ class IdentityRole extends \Phalcon\Mvc\Model
      * Allows to query the first record that match the specified conditions
      *
      * @param mixed $parameters
-     * @return IdentityRole|\Phalcon\Mvc\Model\ResultInterface
+     * @return ExternalServiceProvider|\Phalcon\Mvc\Model\ResultInterface
      */
     public static function findFirst($parameters = null)
     {

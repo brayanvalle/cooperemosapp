@@ -11,7 +11,7 @@ return new \Phalcon\Config([
         'adapter'     => 'Mysql',
         'host'        => 'localhost',
         'username'    => 'root',
-        'password'    => '',
+        'password'    => 'root',
         'dbname'      => 'cooperemosappdb',
         'charset'     => 'utf8',
     ],

@@ -2,7 +2,7 @@
 
 
 
-class IdentityRole extends \Phalcon\Mvc\Model
+class PostUserInteraction extends \Phalcon\Mvc\Model
 {
 
     /**
@@ -13,15 +13,27 @@ class IdentityRole extends \Phalcon\Mvc\Model
 
     /**
      *
-     * @var string
+     * @var integer
      */
-    public $keyName;
+    public $postEntryId;
+
+    /**
+     *
+     * @var integer
+     */
+    public $identityUserId;
 
     /**
      *
      * @var string
      */
-    public $name;
+    public $date;
+
+    /**
+     *
+     * @var integer
+     */
+    public $postUserInteractionTypeId;
 
     /**
      * Initialize method for model.
@@ -29,8 +41,10 @@ class IdentityRole extends \Phalcon\Mvc\Model
     public function initialize()
     {
         $this->setSchema("cooperemosappdb");
-        $this->setSource("identity_role");
-        $this->hasMany('Id', 'IdentityUser', 'IdentityRoleId', ['alias' => 'IdentityUser']);
+        $this->setSource("post_user_interaction");
+        $this->belongsTo('IdentityUserId', 'entityUser', 'Id', ['alias' => 'IdentityUser']);
+        $this->belongsTo('PostEntryId', 'stEntry', 'Id', ['alias' => 'PostEntry']);
+        $this->belongsTo('PostUserInteractionTypeId', 'stUserInteractionType', 'Id', ['alias' => 'PostUserInteractionType']);
     }
 
     /**
@@ -40,14 +54,14 @@ class IdentityRole extends \Phalcon\Mvc\Model
      */
     public function getSource()
     {
-        return 'identity_role';
+        return 'post_user_interaction';
     }
 
     /**
      * Allows to query a set of records that match the specified conditions
      *
      * @param mixed $parameters
-     * @return IdentityRole[]|IdentityRole|\Phalcon\Mvc\Model\ResultSetInterface
+     * @return PostUserInteraction[]|PostUserInteraction|\Phalcon\Mvc\Model\ResultSetInterface
      */
     public static function find($parameters = null)
     {
@@ -58,7 +72,7 @@ class IdentityRole extends \Phalcon\Mvc\Model
      * Allows to query the first record that match the specified conditions
      *
      * @param mixed $parameters
-     * @return IdentityRole|\Phalcon\Mvc\Model\ResultInterface
+     * @return PostUserInteraction|\Phalcon\Mvc\Model\ResultInterface
      */
     public static function findFirst($parameters = null)
     {

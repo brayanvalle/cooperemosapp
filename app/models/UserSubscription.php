@@ -2,7 +2,7 @@
 
 
 
-class IdentityRole extends \Phalcon\Mvc\Model
+class UserSubscription extends \Phalcon\Mvc\Model
 {
 
     /**
@@ -13,15 +13,21 @@ class IdentityRole extends \Phalcon\Mvc\Model
 
     /**
      *
-     * @var string
+     * @var integer
      */
-    public $keyName;
+    public $identityUserId;
+
+    /**
+     *
+     * @var integer
+     */
+    public $subscribedToUserId;
 
     /**
      *
      * @var string
      */
-    public $name;
+    public $date;
 
     /**
      * Initialize method for model.
@@ -29,8 +35,9 @@ class IdentityRole extends \Phalcon\Mvc\Model
     public function initialize()
     {
         $this->setSchema("cooperemosappdb");
-        $this->setSource("identity_role");
-        $this->hasMany('Id', 'IdentityUser', 'IdentityRoleId', ['alias' => 'IdentityUser']);
+        $this->setSource("user_subscription");
+        $this->belongsTo('IdentityUserId', 'entityUser', 'Id', ['alias' => 'IdentityUser']);
+        $this->belongsTo('SubscribedToUserId', 'entityUser', 'Id', ['alias' => 'IdentityUser']);
     }
 
     /**
@@ -40,14 +47,14 @@ class IdentityRole extends \Phalcon\Mvc\Model
      */
     public function getSource()
     {
-        return 'identity_role';
+        return 'user_subscription';
     }
 
     /**
      * Allows to query a set of records that match the specified conditions
      *
      * @param mixed $parameters
-     * @return IdentityRole[]|IdentityRole|\Phalcon\Mvc\Model\ResultSetInterface
+     * @return UserSubscription[]|UserSubscription|\Phalcon\Mvc\Model\ResultSetInterface
      */
     public static function find($parameters = null)
     {
@@ -58,7 +65,7 @@ class IdentityRole extends \Phalcon\Mvc\Model
      * Allows to query the first record that match the specified conditions
      *
      * @param mixed $parameters
-     * @return IdentityRole|\Phalcon\Mvc\Model\ResultInterface
+     * @return UserSubscription|\Phalcon\Mvc\Model\ResultInterface
      */
     public static function findFirst($parameters = null)
     {

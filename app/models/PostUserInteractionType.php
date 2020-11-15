@@ -2,7 +2,7 @@
 
 
 
-class IdentityRole extends \Phalcon\Mvc\Model
+class PostUserInteractionType extends \Phalcon\Mvc\Model
 {
 
     /**
@@ -15,13 +15,13 @@ class IdentityRole extends \Phalcon\Mvc\Model
      *
      * @var string
      */
-    public $keyName;
+    public $name;
 
     /**
      *
      * @var string
      */
-    public $name;
+    public $keyName;
 
     /**
      * Initialize method for model.
@@ -29,8 +29,8 @@ class IdentityRole extends \Phalcon\Mvc\Model
     public function initialize()
     {
         $this->setSchema("cooperemosappdb");
-        $this->setSource("identity_role");
-        $this->hasMany('Id', 'IdentityUser', 'IdentityRoleId', ['alias' => 'IdentityUser']);
+        $this->setSource("post_user_interaction_type");
+        $this->hasMany('Id', 'stUserInteraction', 'PostUserInteractionTypeId', ['alias' => 'PostUserInteraction']);
     }
 
     /**
@@ -40,14 +40,14 @@ class IdentityRole extends \Phalcon\Mvc\Model
      */
     public function getSource()
     {
-        return 'identity_role';
+        return 'post_user_interaction_type';
     }
 
     /**
      * Allows to query a set of records that match the specified conditions
      *
      * @param mixed $parameters
-     * @return IdentityRole[]|IdentityRole|\Phalcon\Mvc\Model\ResultSetInterface
+     * @return PostUserInteractionType[]|PostUserInteractionType|\Phalcon\Mvc\Model\ResultSetInterface
      */
     public static function find($parameters = null)
     {
@@ -58,7 +58,7 @@ class IdentityRole extends \Phalcon\Mvc\Model
      * Allows to query the first record that match the specified conditions
      *
      * @param mixed $parameters
-     * @return IdentityRole|\Phalcon\Mvc\Model\ResultInterface
+     * @return PostUserInteractionType|\Phalcon\Mvc\Model\ResultInterface
      */
     public static function findFirst($parameters = null)
     {

@@ -2,7 +2,7 @@
 
 
 
-class IdentityRole extends \Phalcon\Mvc\Model
+class PluginGamePostInteraction extends \Phalcon\Mvc\Model
 {
 
     /**
@@ -13,15 +13,45 @@ class IdentityRole extends \Phalcon\Mvc\Model
 
     /**
      *
-     * @var string
+     * @var integer
      */
-    public $keyName;
+    public $pluginGameId;
+
+    /**
+     *
+     * @var integer
+     */
+    public $identityUserId;
 
     /**
      *
      * @var string
      */
-    public $name;
+    public $body;
+
+    /**
+     *
+     * @var string
+     */
+    public $date;
+
+    /**
+     *
+     * @var string
+     */
+    public $assetUrl;
+
+    /**
+     *
+     * @var string
+     */
+    public $externalLinkUrl;
+
+    /**
+     *
+     * @var integer
+     */
+    public $hasWon;
 
     /**
      * Initialize method for model.
@@ -29,8 +59,9 @@ class IdentityRole extends \Phalcon\Mvc\Model
     public function initialize()
     {
         $this->setSchema("cooperemosappdb");
-        $this->setSource("identity_role");
-        $this->hasMany('Id', 'IdentityUser', 'IdentityRoleId', ['alias' => 'IdentityUser']);
+        $this->setSource("plugin_game_post_interaction");
+        $this->belongsTo('PluginGameId', 'uginGamePost', 'Id', ['alias' => 'PluginGamePost']);
+        $this->belongsTo('IdentityUserId', 'entityUser', 'Id', ['alias' => 'IdentityUser']);
     }
 
     /**
@@ -40,14 +71,14 @@ class IdentityRole extends \Phalcon\Mvc\Model
      */
     public function getSource()
     {
-        return 'identity_role';
+        return 'plugin_game_post_interaction';
     }
 
     /**
      * Allows to query a set of records that match the specified conditions
      *
      * @param mixed $parameters
-     * @return IdentityRole[]|IdentityRole|\Phalcon\Mvc\Model\ResultSetInterface
+     * @return PluginGamePostInteraction[]|PluginGamePostInteraction|\Phalcon\Mvc\Model\ResultSetInterface
      */
     public static function find($parameters = null)
     {
@@ -58,7 +89,7 @@ class IdentityRole extends \Phalcon\Mvc\Model
      * Allows to query the first record that match the specified conditions
      *
      * @param mixed $parameters
-     * @return IdentityRole|\Phalcon\Mvc\Model\ResultInterface
+     * @return PluginGamePostInteraction|\Phalcon\Mvc\Model\ResultInterface
      */
     public static function findFirst($parameters = null)
     {
