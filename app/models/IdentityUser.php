@@ -15,6 +15,12 @@ class IdentityUser extends \Phalcon\Mvc\Model
      *
      * @var string
      */
+    public $PasswordPlain;
+
+    /**
+     *
+     * @var string
+     */
     public $UserHashId;
 
     /**
