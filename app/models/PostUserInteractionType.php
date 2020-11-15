@@ -9,19 +9,19 @@ class PostUserInteractionType extends \Phalcon\Mvc\Model
      *
      * @var integer
      */
-    public $id;
+    public $Id;
 
     /**
      *
      * @var string
      */
-    public $name;
+    public $Name;
 
     /**
      *
      * @var string
      */
-    public $keyName;
+    public $KeyName;
 
     /**
      * Initialize method for model.

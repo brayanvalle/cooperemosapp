@@ -9,31 +9,31 @@ class Plugin extends \Phalcon\Mvc\Model
      *
      * @var integer
      */
-    public $id;
+    public $Id;
 
     /**
      *
      * @var string
      */
-    public $hashId;
+    public $HashId;
 
     /**
      *
      * @var string
      */
-    public $name;
+    public $Name;
 
     /**
      *
      * @var integer
      */
-    public $active;
+    public $Active;
 
     /**
      *
      * @var integer
      */
-    public $externalServiceProviderId;
+    public $ExternalServiceProviderId;
 
     /**
      * Initialize method for model.

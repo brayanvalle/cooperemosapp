@@ -9,31 +9,31 @@ class PostUserInteraction extends \Phalcon\Mvc\Model
      *
      * @var integer
      */
-    public $id;
+    public $Id;
 
     /**
      *
      * @var integer
      */
-    public $postEntryId;
+    public $PostEntryId;
 
     /**
      *
      * @var integer
      */
-    public $identityUserId;
+    public $IdentityUserId;
 
     /**
      *
      * @var string
      */
-    public $date;
+    public $Date;
 
     /**
      *
      * @var integer
      */
-    public $postUserInteractionTypeId;
+    public $PostUserInteractionTypeId;
 
     /**
      * Initialize method for model.

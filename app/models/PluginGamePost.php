@@ -9,67 +9,67 @@ class PluginGamePost extends \Phalcon\Mvc\Model
      *
      * @var integer
      */
-    public $id;
+    public $Id;
 
     /**
      *
      * @var integer
      */
-    public $pluginId;
+    public $PluginId;
 
     /**
      *
      * @var string
      */
-    public $creationDate;
+    public $CreationDate;
 
     /**
      *
      * @var integer
      */
-    public $isPublished;
+    public $IsPublished;
 
     /**
      *
      * @var integer
      */
-    public $isActive;
+    public $IsActive;
 
     /**
      *
      * @var string
      */
-    public $titile;
+    public $Titile;
 
     /**
      *
      * @var string
      */
-    public $body;
+    public $Body;
 
     /**
      *
      * @var string
      */
-    public $bannerImageUrl;
+    public $BannerImageUrl;
 
     /**
      *
      * @var string
      */
-    public $publishedDate;
+    public $PublishedDate;
 
     /**
      *
      * @var string
      */
-    public $editedDate;
+    public $EditedDate;
 
     /**
      *
      * @var string
      */
-    public $validUntil;
+    public $ValidUntil;
 
     /**
      * Initialize method for model.

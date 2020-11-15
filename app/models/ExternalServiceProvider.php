@@ -9,31 +9,31 @@ class ExternalServiceProvider extends \Phalcon\Mvc\Model
      *
      * @var integer
      */
-    public $id;
+    public $Id;
 
     /**
      *
      * @var string
      */
-    public $hashId;
+    public $HashId;
 
     /**
      *
      * @var string
      */
-    public $token;
+    public $Token;
 
     /**
      *
      * @var string
      */
-    public $apiUrl;
+    public $ApiUrl;
 
     /**
      *
      * @var string
      */
-    public $name;
+    public $Name;
 
     /**
      * Initialize method for model.

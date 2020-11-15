@@ -9,25 +9,25 @@ class UserSubscription extends \Phalcon\Mvc\Model
      *
      * @var integer
      */
-    public $id;
+    public $Id;
 
     /**
      *
      * @var integer
      */
-    public $identityUserId;
+    public $IdentityUserId;
 
     /**
      *
      * @var integer
      */
-    public $subscribedToUserId;
+    public $SubscribedToUserId;
 
     /**
      *
      * @var string
      */
-    public $date;
+    public $Date;
 
     /**
      * Initialize method for model.

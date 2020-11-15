@@ -9,79 +9,79 @@ class IdentityUser extends \Phalcon\Mvc\Model
      *
      * @var integer
      */
-    public $id;
+    public $Id;
 
     /**
      *
      * @var string
      */
-    public $userHashId;
+    public $UserHashId;
 
     /**
      *
      * @var string
      */
-    public $passwordHash;
+    public $PasswordHash;
 
     /**
      *
      * @var string
      */
-    public $email;
+    public $Email;
 
     /**
      *
      * @var string
      */
-    public $googleId;
+    public $GoogleId;
 
     /**
      *
      * @var integer
      */
-    public $isActive;
+    public $IsActive;
 
     /**
      *
      * @var string
      */
-    public $createdAt;
+    public $CreatedAt;
 
     /**
      *
      * @var string
      */
-    public $lastConnectionDate;
+    public $LastConnectionDate;
 
     /**
      *
      * @var integer
      */
-    public $identityRoleId;
+    public $IdentityRoleId;
 
     /**
      *
      * @var string
      */
-    public $passwordRecoveryToken;
+    public $PasswordRecoveryToken;
 
     /**
      *
      * @var string
      */
-    public $updatedAt;
+    public $UpdatedAt;
 
     /**
      *
      * @var integer
      */
-    public $externalUserProfileId;
+    public $ExternalUserProfileId;
 
     /**
      *
      * @var integer
      */
-    public $isInternal;
+    public $IsInternal;
 
     /**
      * Initialize method for model.

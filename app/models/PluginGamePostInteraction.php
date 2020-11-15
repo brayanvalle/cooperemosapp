@@ -9,49 +9,49 @@ class PluginGamePostInteraction extends \Phalcon\Mvc\Model
      *
      * @var integer
      */
-    public $id;
+    public $Id;
 
     /**
      *
      * @var integer
      */
-    public $pluginGameId;
+    public $PluginGameId;
 
     /**
      *
      * @var integer
      */
-    public $identityUserId;
+    public $IdentityUserId;
 
     /**
      *
      * @var string
      */
-    public $body;
+    public $Body;
 
     /**
      *
      * @var string
      */
-    public $date;
+    public $Date;
 
     /**
      *
      * @var string
      */
-    public $assetUrl;
+    public $AssetUrl;
 
     /**
      *
      * @var string
      */
-    public $externalLinkUrl;
+    public $ExternalLinkUrl;
 
     /**
      *
      * @var integer
      */
-    public $hasWon;
+    public $HasWon;
 
     /**
      * Initialize method for model.

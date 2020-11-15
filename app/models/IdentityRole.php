@@ -9,19 +9,19 @@ class IdentityRole extends \Phalcon\Mvc\Model
      *
      * @var integer
      */
-    public $id;
+    public $Id;
 
     /**
      *
      * @var string
      */
-    public $keyName;
+    public $KeyName;
 
     /**
      *
      * @var string
      */
-    public $name;
+    public $Name;
 
     /**
      * Initialize method for model.

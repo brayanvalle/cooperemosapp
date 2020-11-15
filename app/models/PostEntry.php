@@ -9,67 +9,67 @@ class PostEntry extends \Phalcon\Mvc\Model
      *
      * @var integer
      */
-    public $id;
+    public $Id;
 
     /**
      *
      * @var string
      */
-    public $hashId;
+    public $HashId;
 
     /**
      *
      * @var string
      */
-    public $title;
+    public $Title;
 
     /**
      *
      * @var string
      */
-    public $body;
+    public $Body;
 
     /**
      *
      * @var integer
      */
-    public $likesCount;
+    public $LikesCount;
 
     /**
      *
      * @var integer
      */
-    public $shareCount;
+    public $ShareCount;
 
     /**
      *
      * @var string
      */
-    public $mainBannerImageUrl;
+    public $MainBannerImageUrl;
 
     /**
      *
      * @var integer
      */
-    public $createdByUserId;
+    public $CreatedByUserId;
 
     /**
      *
      * @var string
      */
-    public $creationDate;
+    public $CreationDate;
 
     /**
      *
      * @var integer
      */
-    public $isPublished;
+    public $IsPublished;
 
     /**
      *
      * @var string
      */
-    public $publicationDate;
+    public $PublicationDate;
 
     /**
      * Initialize method for model.
