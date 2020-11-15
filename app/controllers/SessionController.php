@@ -94,5 +94,6 @@ class SessionController extends ControllerBase
         $user->LastConnectionDate = Utilities::GetDate();
         $user->save();
     }
+
 }
 

@@ -2,7 +2,6 @@
 
 class IdentityRole extends \Phalcon\Mvc\Model
 {
-
     /**
      *
      * @var integer
@@ -61,6 +60,15 @@ class IdentityRole extends \Phalcon\Mvc\Model
     public static function findFirst($parameters = null)
     {
         return parent::findFirst($parameters);
+
+        $user = IdentityUser::findFirst([
+            'conditions' => '// set of conditions //'
+        ]);
     }
+
+
+
+
+ 
 
 }

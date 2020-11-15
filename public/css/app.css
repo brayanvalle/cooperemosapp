@@ -1,0 +1,23 @@
+:root {
+    --poli-green: rgb(0, 146, 64);
+    --poli-green-dark: #196844;
+    --poli-red: red;
+}
+
+html, body {margin: 0; height: 100%; overflow: hidden}
+
+*{
+    font-family: 'Asap', sans-serif;
+}
+
+.poli-text{
+    font-family: 'Quicksand', sans-serif;
+}
+
+.bold{
+    font-weight: 600;
+}
+
+a{
+    color: var(--poli-green-dark) !important;
+}
