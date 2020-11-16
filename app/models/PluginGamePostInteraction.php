@@ -58,8 +58,8 @@ class PluginGamePostInteraction extends \Phalcon\Mvc\Model
      */
     public function initialize()
     {
-        $this->setSchema("cooperemosappdb");
-        $this->setSource("plugin_game_post_interaction");
+        $this->setSchema("nicooperationdbv2");
+        $this->setSource("_app_plugin_game_post_interaction");
         $this->belongsTo('PluginGameId', 'PluginGamePost', 'Id', ['alias' => 'PluginGamePost']);
         $this->belongsTo('IdentityUserId', 'IdentityUser', 'Id', ['alias' => 'IdentityUser']);
     }
@@ -71,7 +71,7 @@ class PluginGamePostInteraction extends \Phalcon\Mvc\Model
      */
     public function getSource()
     {
-        return 'plugin_game_post_interaction';
+        return '_app_plugin_game_post_interaction';
     }
 
     /**

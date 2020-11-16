@@ -1,6 +1,8 @@
 <?php
 
 use Phalcon\Mvc\Controller;
+use Phalcon\Http\Response;
+use Phalcon\Http\Request;
 
 $APP_URL = "http://$_SERVER[HTTP_HOST]";
 
@@ -14,6 +16,33 @@ class ControllerBase extends Controller
         $this->handleSession();
         $this->loadAssets();
     }
+
+    public function getSession()
+    {
+        return $this->session->get('cooperemosapp');
+    }
+
+    public function GetSessionUser()
+    {
+        return $this->getSession();
+    }
+
+    protected function Response($status , $header , $body){
+        $response=new Response();
+        $response->setStatusCode($status, $header);
+        $response->setJsonContent($body);
+        return $response;
+    }
+
+    protected function Ok($message){
+        return $this->Response(200 , 'Ok' , $message);
+        
+    }
+
+    protected function Error($message){
+        return $this->Response(400 , 'Error' , $message);
+    }
+
 
     private function handleSession()
     {         

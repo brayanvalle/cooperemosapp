@@ -19,6 +19,10 @@ class UserService{
             throw new Error(Utils::Error()->getErrorMessage($user));
         }
     }
+
+    public function getExternaluserInfo($externalUserProfileId){
+                
+    }
 }
 
 ?>

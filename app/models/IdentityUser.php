@@ -94,8 +94,8 @@ class IdentityUser extends \Phalcon\Mvc\Model
      */
     public function initialize()
     {
-        $this->setSchema("cooperemosappdb");
-        $this->setSource("identity_user");
+        $this->setSchema("nicooperationdbv2");
+        $this->setSource("_app_identity_user");
         $this->hasMany('Id', 'PluginGamePostInteraction', 'IdentityUserId', ['alias' => 'PluginGamePostInteraction']);
         $this->hasMany('Id', 'PostEntry', 'Id', ['alias' => 'PostEntry']);
         $this->hasMany('Id', 'PostUserInteraction', 'IdentityUserId', ['alias' => 'PostUserInteraction']);
@@ -111,7 +111,7 @@ class IdentityUser extends \Phalcon\Mvc\Model
      */
     public function getSource()
     {
-        return 'identity_user';
+        return '_app_identity_user';
     }
 
     /**

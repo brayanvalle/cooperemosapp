@@ -6,6 +6,7 @@ class User{
 
     public $IdentityUser;
 
+    public $externalUser;
     
 }
 

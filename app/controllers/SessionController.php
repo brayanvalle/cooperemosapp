@@ -7,12 +7,14 @@ class SessionController extends ControllerBase
 
     private function _registerSession($identityUser)
 	{		
-
+        $_internacionalizacionAppService = new InternacionalizacionAppService();
         $user = new User();
 
         $user->IdentityUser = $identityUser;
         $user->Name = $identityUser->DisplayName;
         $user->Id = $identityUser->Id;
+
+        $user->externalUser = $_internacionalizacionAppService->getUserProfile($identityUser->ExternalUserProfileId);
 
 		$this->session->set(
 				$this->SESSION_NAME,
@@ -20,7 +22,8 @@ class SessionController extends ControllerBase
 					'UserId'   => $user->Id,
                     'Name'	   => $user->Name,
                     'RoleKey'  => $user->IdentityUser->IdentityRole->KeyName,
-					'RoleName' => $user->IdentityUser->IdentityRole->Name
+                    'RoleName' => $user->IdentityUser->IdentityRole->Name,
+                    'ExternalUser' => $user->externalUser
                 ]
         );		
 	}
@@ -30,7 +33,6 @@ class SessionController extends ControllerBase
 
 	public function indexAction()
 	{
-        print("hsdjsdsdlsd");
         if ($this->request->isPost()) {	
 
 			$email    = $this->request->getPost('email');

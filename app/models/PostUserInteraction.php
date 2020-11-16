@@ -40,8 +40,8 @@ class PostUserInteraction extends \Phalcon\Mvc\Model
      */
     public function initialize()
     {
-        $this->setSchema("cooperemosappdb");
-        $this->setSource("post_user_interaction");
+        $this->setSchema("nicooperationdbv2");
+        $this->setSource("_app_post_user_interaction");
         $this->belongsTo('IdentityUserId', 'IdentityUser', 'Id', ['alias' => 'IdentityUser']);
         $this->belongsTo('PostEntryId', 'PostEntry', 'Id', ['alias' => 'PostEntry']);
         $this->belongsTo('PostUserInteractionTypeId', 'PostUserInteractionType', 'Id', ['alias' => 'PostUserInteractionType']);
@@ -54,7 +54,7 @@ class PostUserInteraction extends \Phalcon\Mvc\Model
      */
     public function getSource()
     {
-        return 'post_user_interaction';
+        return '_app_post_user_interaction';
     }
 
     /**

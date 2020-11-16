@@ -13,6 +13,10 @@ class Utils{
     public static function Date(): Date{
         return new Date();
     }
+
+    public static function Http(): Http{
+        return new Http();
+    }
 }
 
 ?>

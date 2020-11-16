@@ -40,8 +40,8 @@ class Plugin extends \Phalcon\Mvc\Model
      */
     public function initialize()
     {
-        $this->setSchema("cooperemosappdb");
-        $this->setSource("plugin");
+        $this->setSchema("nicooperationdbv2");
+        $this->setSource("_app_plugin");
         $this->hasMany('Id', 'PluginGamePost', 'PluginId', ['alias' => 'PluginGamePost']);
         $this->belongsTo('ExternalServiceProviderId', 'ExternalServiceProvider', 'Id', ['alias' => 'ExternalServiceProvider']);
     }
@@ -53,7 +53,7 @@ class Plugin extends \Phalcon\Mvc\Model
      */
     public function getSource()
     {
-        return 'plugin';
+        return '_app_plugin';
     }
 
     /**

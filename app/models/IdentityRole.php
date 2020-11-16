@@ -28,8 +28,8 @@ class IdentityRole extends \Phalcon\Mvc\Model
      */
     public function initialize()
     {
-        $this->setSchema("cooperemosappdb");
-        $this->setSource("identity_role");
+        $this->setSchema("nicooperationdbv2");
+        $this->setSource("_app_identity_role");
         $this->hasMany('Id', 'IdentityUser', 'IdentityRoleId', ['alias' => 'IdentityUser']);
     }
 
@@ -40,7 +40,7 @@ class IdentityRole extends \Phalcon\Mvc\Model
      */
     public function getSource()
     {
-        return 'identity_role';
+        return '_app_identity_role';
     }
 
     /**

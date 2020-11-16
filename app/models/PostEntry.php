@@ -73,8 +73,8 @@ class PostEntry extends \Phalcon\Mvc\Model
      */
     public function initialize()
     {
-        $this->setSchema("cooperemosappdb");
-        $this->setSource("post_entry");
+        $this->setSchema("nicooperationdbv2");
+        $this->setSource("_app_post_entry");
         $this->hasMany('Id', 'PostUserInteraction', 'PostEntryId', ['alias' => 'PostUserInteraction']);
         $this->belongsTo('CreatedByUserId', 'IdentityUser', 'Id', ['alias' => 'IdentityUser']);
     }
@@ -86,7 +86,7 @@ class PostEntry extends \Phalcon\Mvc\Model
      */
     public function getSource()
     {
-        return 'post_entry';
+        return '_app_post_entry';
     }
 
     /**

@@ -40,8 +40,8 @@ class ExternalServiceProvider extends \Phalcon\Mvc\Model
      */
     public function initialize()
     {
-        $this->setSchema("cooperemosappdb");
-        $this->setSource("external_service_provider");
+        $this->setSchema("nicooperationdbv2");
+        $this->setSource("_app_external_service_provider");
         $this->hasMany('Id', 'Plugin', 'ExternalServiceProviderId', ['alias' => 'Plugin']);
     }
 
@@ -52,7 +52,7 @@ class ExternalServiceProvider extends \Phalcon\Mvc\Model
      */
     public function getSource()
     {
-        return 'external_service_provider';
+        return '_app_external_service_provider';
     }
 
     /**

@@ -46,6 +46,12 @@ class ApiController extends Controller{
         return $this->Ok("all good");
     }
 
+
+    public function createUUIDAction(){
+
+        return $this->Ok(Utils::Hash()->uuid());
+    }
+    
     public function createPostEntryAction(){        
         try{
             $request = $this->request->getJsonRawBody();

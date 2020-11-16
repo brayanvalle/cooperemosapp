@@ -34,8 +34,8 @@ class UserSubscription extends \Phalcon\Mvc\Model
      */
     public function initialize()
     {
-        $this->setSchema("cooperemosappdb");
-        $this->setSource("user_subscription");
+        $this->setSchema("nicooperationdbv2");
+        $this->setSource("_app_user_subscription");
         $this->belongsTo('IdentityUserId', 'IdentityUser', 'Id', ['alias' => 'IdentityUser']);
         $this->belongsTo('SubscribedToUserId', 'IdentityUser', 'Id', ['alias' => 'IdentityUser']);
     }
@@ -47,7 +47,7 @@ class UserSubscription extends \Phalcon\Mvc\Model
      */
     public function getSource()
     {
-        return 'user_subscription';
+        return '_app_user_subscription';
     }
 
     /**

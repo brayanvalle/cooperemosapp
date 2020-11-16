@@ -12,7 +12,7 @@ return new \Phalcon\Config([
         'host'        => 'localhost',
         'username'    => 'root',
         'password'    => 'root',
-        'dbname'      => 'cooperemosappdb',
+        'dbname'      => 'nicooperationdbv2',
         'charset'     => 'utf8',
     ],
     'application' => [
