@@ -7,28 +7,31 @@
               <div class="card news-card">
                 <div class="card-body">
                   <div class="content post-feed-author">
-                    <img class="rounded-circle post-avatar-img" src="https://mdbootstrap.com/img/Photos/Avatars/img%20(3).jpg">      
+                    <img class="rounded-circle post-avatar-img" src="<?php echo $post->IdentityUser->AvatarImageUrl?>">      
 
                     <div class="author-info">
                       <h5 class="author-name ml-2"><?php echo $post->IdentityUser->DisplayName ?></h5>
-                      <p class="author-description ml-2">Estudiante | Ingeniería informática</p>
+                      <span class="author-description ml-2" style="white-space:normal;"><?php echo $post->IdentityUser->DisplayInfo ?></span>
                       <p class="post-date ml-2">Hace 2 horas</p>
                     </div>                  
                   </div>
 
+                  <strong><h5 class="mt-2"><?php echo $post->Title ?></h5></strong>
                   <div class="content post-feed-resumen mt-2">
                     <?php echo $post->Body ?>
-                  </div>
-                </div>
+                  </div>                  
+                  <p class="text-right" style="color:grey;margin-bottom:0 !important">Ver más...</p>
+                </div>               
+                <img class="card-img-top" src="<?php echo $post->MainBannerImageUrl; ?>" alt="Card image cap">
                 <div class="card-body">                  
                   <div class="social-meta">
-                    <p class="blue-text">#awesome #bboy #battle #breaking #cool</p>
+                    <!-- <p class="blue-text">#awesome #bboy #battle #breaking #cool</p> -->
                     <div class="social-counter float-right">
-                      <i class="far fa-heart fa-lg"><span class="ml-2">12</span></i>
-                      <i class="far fa-share-square fa-lg ml-3"><span class="ml-2">3</span></i>
+                      <i class="far fa-heart fa-lg"><span class="ml-2"><?php echo $post->LikesCount ?></span></i>
+                      <i class="far fa-share-square fa-lg ml-3"><span class="ml-2"><?php echo $post->ShareCount ?></span></i>
                     </div>           
                   </div>
-                </div>
+                </div>                
               </div>
             </div>
           </div>

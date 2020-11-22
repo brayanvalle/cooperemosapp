@@ -8,22 +8,18 @@ class SessionController extends ControllerBase
     private function _registerSession($identityUser)
 	{		
         $_internacionalizacionAppService = new InternacionalizacionAppService();
-        $user = new User();
 
-        $user->IdentityUser = $identityUser;
-        $user->Name = $identityUser->DisplayName;
-        $user->Id = $identityUser->Id;
-
-        $user->externalUser = $_internacionalizacionAppService->getUserProfile($identityUser->ExternalUserProfileId);
+        $externalUser = $_internacionalizacionAppService->getUserProfile($identityUser->ExternalUserProfileId);
 
 		$this->session->set(
 				$this->SESSION_NAME,
 				[
-					'UserId'   => $user->Id,
-                    'Name'	   => $user->Name,
-                    'RoleKey'  => $user->IdentityUser->IdentityRole->KeyName,
-                    'RoleName' => $user->IdentityUser->IdentityRole->Name,
-                    'ExternalUser' => $user->externalUser
+					'UserId'   => $identityUser->Id,
+                    'Name'	   => $identityUser->DisplayName,
+                    'RoleKey'  => $identityUser->IdentityRole->KeyName,
+                    'RoleName' => $identityUser->IdentityRole->Name,
+                    'AvatarImageUrl' => $identityUser->AvatarImageUrl,
+                    'ExternalUser' => $externalUser
                 ]
         );		
 	}

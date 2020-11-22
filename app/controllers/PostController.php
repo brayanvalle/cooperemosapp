@@ -17,7 +17,9 @@ class PostController extends ControllerBase
         ]);
 
         $this->view->page = $paginator->getPaginate();
-    }
+
+        $user = $this->getSession();
+     }
 
 }
 
