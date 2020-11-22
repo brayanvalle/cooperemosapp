@@ -46,8 +46,10 @@ class ControllerBase extends Controller
 
     private function handleSession()
     {         
+       
         header('Content-Type: text/html; charset=utf-8');        
         $SESSION = "cooperemosapp";     
+        
         
         if(!$this->session->get($SESSION)){            
             $actual_link = "$_SERVER[REQUEST_URI]";      

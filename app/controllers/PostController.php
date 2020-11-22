@@ -5,12 +5,6 @@ use Phalcon\Paginator\Adapter\Model as Paginator;
 
 class PostController extends ControllerBase
 {
-    function initialize() {
-        $this->postEntryService = new PostEntryService();
-    }
-
-
-
     public function indexAction()
     {
         $numberPage = 1;
@@ -28,6 +22,8 @@ class PostController extends ControllerBase
 
     public function doLikeAction($postId)
     {
+        $postEntryService = new PostEntryService();
+
         try{
             $user = $this->getSession();
 
