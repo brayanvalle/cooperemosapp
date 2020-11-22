@@ -72,9 +72,10 @@ class ControllerBase extends Controller
             ->addCss('css/post/main.css')
             ->addCss('css/session/login.css');
 
-        // $this->assets
-        //     ->collection('headerjs')
-        //     ->addJs('assets/plugins/jquery/jquery.js')
+        $this->assets
+            ->collection('headerjs')
+            ->addJs('js/app.js')
+            ->addJs('js/utils.js');
         //     ->addJs('assets/plugins/jquery/formatNumber.js')
         //     ->addJs('assets/plugins/bootstrap/js/tether.min.js')
         //     ->addJs('assets/plugins/bootstrap/js/bootstrap.min.js')

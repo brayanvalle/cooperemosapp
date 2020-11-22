@@ -18,6 +18,24 @@ class PostEntryService{
             throw new Error(Utils::Error()->getErrorMessage($postEntry));
         }
     }
+
+    public function doPostUserInteraction(PostUserInteraction $postUserInteraction, $type){
+        switch($type){
+            case 'LIKE' :
+                $postUserInteraction->PostUserInteractionTypeId = 1;
+                $postUserInteraction->PostEntry->LikesCount = $postUserInteraction->PostEntry->LikesCount + 1;
+                break;
+            case 'SHARE': $$postUserInteraction->PostUserInteractionTypeId = 2;
+        }
+
+        $postUserInteraction->Date = Utils::Date()->getDate();
+
+        
+        if(!$postUserInteraction->save()){
+            throw new Error(Utils::Error()->getErrorMessage($postUserInteraction));
+        }
+
+    }
 }
 
 ?>

@@ -27,7 +27,7 @@
                   <div class="social-meta">
                     <!-- <p class="blue-text">#awesome #bboy #battle #breaking #cool</p> -->
                     <div class="social-counter float-right">
-                      <i class="far fa-heart fa-lg"><span class="ml-2"><?php echo $post->LikesCount ?></span></i>
+                      <i class="far fa-heart fa-lg" id="post_like_btn" post-id=<?php echo $post->Id ?>><span class="ml-2" like-count=<?php echo $post->LikesCount ?> id="post_like_<?php echo $post->Id ?>"><?php echo $post->LikesCount ?></span></i>
                       <i class="far fa-share-square fa-lg ml-3"><span class="ml-2"><?php echo $post->ShareCount ?></span></i>
                     </div>           
                   </div>
@@ -42,3 +42,38 @@
 
 <?php echo $this->getContent(); ?>
 
+
+<script>
+  $(document).ready(function(){
+    const _endpoint = 'post/doLike/';
+
+    $('#post_like_btn').click(function(){
+      const postId = $(this).attr('post-id');
+      doLike(postId);
+    });
+
+    function drawLikeAction(postId){      
+      const postLikeElement = $('#post_like_'+postId);
+      const postLikeCount = postLikeElement.attr('like-count');
+      const likeCount = parseInt(postLikeCount) + 1;
+      postLikeElement.html(likeCount);
+      postLikeElement.attr('like-count', likeCount);  
+    }
+
+    function doLike(postId){
+        const request = doRequest({
+            url: _endpoint + postId
+        });
+
+        request.done(function(){
+            console.log(postId);
+            drawLikeAction(postId);
+        });
+        
+    }
+
+    function doDislike(){
+
+    } 
+  });
+</script>

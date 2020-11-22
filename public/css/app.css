@@ -4,7 +4,11 @@
     --poli-red: red;
 }
 
-html, body {margin: 0; height: 100%; overflow: hidden}
+html, body {
+    margin: 0;
+    height: 100%;
+    overflow-x: hidden
+}
 
 *{
     font-family: 'Asap', sans-serif;
