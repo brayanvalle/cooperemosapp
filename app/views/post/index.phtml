@@ -20,7 +20,7 @@
                   <div class="content post-feed-resumen mt-2">
                     <?php echo $post->Body ?>
                   </div>                  
-                  <p class="text-right" style="color:grey;margin-bottom:0 !important">Ver más...</p>
+                  <p class="text-right" style="color:grey;margin-bottom:0 !important"><?php echo $this->tag->linkTo('post/view/'. $post->Id, 'Ver más...') ?></p>
                 </div>               
                 <img class="card-img-top" src="<?php echo $post->MainBannerImageUrl; ?>" alt="Card image cap">
                 <div class="card-body">                  
@@ -28,7 +28,7 @@
                     <!-- <p class="blue-text">#awesome #bboy #battle #breaking #cool</p> -->
                     <div class="social-counter float-right">
                       <i class="far fa-heart fa-lg" id="post_like_btn" post-id=<?php echo $post->Id ?>><span class="ml-2" like-count=<?php echo $post->LikesCount ?> id="post_like_<?php echo $post->Id ?>"><?php echo $post->LikesCount ?></span></i>
-                      <i class="far fa-share-square fa-lg ml-3"><span class="ml-2"><?php echo $post->ShareCount ?></span></i>
+                      <i class="far fa-share-square fa-lg ml-3" id="post_share_btn"  post-id=<?php echo $post->Id ?>><span class="ml-2"><?php echo $post->ShareCount ?></span></i>
                     </div>           
                   </div>
                 </div>                
@@ -45,11 +45,22 @@
 
 <script>
   $(document).ready(function(){
-    const _endpoint = 'post/doLike/';
+    const _APP_URL_ = $('#APP_URL').val();
+    
+    const _endpoint = {
+      doLike: 'post/doLike/',
+      doShare: 'post/doShare/'
+    };
 
     $('#post_like_btn').click(function(){
       const postId = $(this).attr('post-id');
+      $(this).toggleClass('text-danger');
       doLike(postId);
+    });
+
+    $('#post_share_btn').click(function(){
+      const postId = $(this).attr('post-id');
+      doShare(postId);
     });
 
     function drawLikeAction(postId){      
@@ -60,20 +71,47 @@
       postLikeElement.attr('like-count', likeCount);  
     }
 
+    function drawDislikeAction(postId){      
+      const postLikeElement = $('#post_like_'+postId);
+      const postLikeCount = postLikeElement.attr('like-count');
+      const likeCount = parseInt(postLikeCount) - 1;
+      postLikeElement.html(likeCount);
+      postLikeElement.attr('like-count', likeCount);  
+    }
+
+    function doShare(postId){
+      if (navigator.share) {
+        navigator.share({
+          title: 'Cooperemos App',
+          text: 'Mira este post.',
+          url: `${_APP_URL_}post/view/${postId}`
+        })
+          .then(() => alert('Successful share'))
+          .catch((error) => alert('Error sharing', error));
+      }else{
+        alert('Not soported')
+      }
+
+      const request = doRequest({
+            url: _endpoint.doShare + postId
+        });
+      request.done(function(response){
+      });
+
+
+    }
+
     function doLike(postId){
         const request = doRequest({
-            url: _endpoint + postId
+            url: _endpoint.doLike + postId
         });
-
-        request.done(function(){
-            console.log(postId);
+        request.done(function(response){
+          if(response.action === 'LIKE')
             drawLikeAction(postId);
+          else
+            drawDislikeAction(postId);
         });
         
     }
-
-    function doDislike(){
-
-    } 
   });
 </script>

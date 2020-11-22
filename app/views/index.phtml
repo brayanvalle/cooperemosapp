@@ -34,6 +34,13 @@
     </head>
     <body>
 
+    <?php echo $this->tag->hiddenField(
+            [
+                "APP_URL"
+            ]
+        );
+    ?>
+
         <?php
             $user = $this->session->get('cooperemosapp');
             if($user) { ?>
