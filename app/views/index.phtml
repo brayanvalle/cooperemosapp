@@ -75,7 +75,14 @@
                     <i class="material-icons nav__icon">dashboard</i>
                     <span class="nav__text">Apps</span>
                 </a>
-                <a href="#" class="nav__link">
+
+                <?php echo $this->tag->linkTo(['user/view/' . $user['UserId'], 
+                    '<i class="material-icons nav__icon">person</i>
+                    <span class="nav__text">Mi perfil</span>', 
+                    'class' => 'nav__link']) 
+                ?>
+
+                <a href="" class="nav__link">
                     <i class="material-icons nav__icon">person</i>
                     <span class="nav__text">Mi perfil</span>
                 </a>
