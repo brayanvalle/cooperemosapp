@@ -1,109 +1,122 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta name="theme-color" content="#196844" />
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Cooperemos App | POLI JIC</title>
-        
-        <!-- Font Awesome -->
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
-        <!-- Google Fonts -->
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
-        
-        <link href="https://fonts.googleapis.com/css2?family=Asap:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-        <!-- Bootstrap core CSS -->
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
-        <!-- Material Design Bootstrap -->
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet">
-                
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-        <?php $this->assets->outputCss('headercss');?>
-             
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/js/mdb.min.js"></script>  
-  
 
-        <?php $this->assets->outputJs('headerjs');?>
+<head>
+    <meta name="theme-color" content="#196844" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cooperemos App | POLI JIC</title>
 
-        <link rel="shortcut icon" type="image/x-icon" href="<?php echo $this->url->get('img/favicon.png')?>"/>
-    </head>
-    <body>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+    <!-- Google Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+
+    <link href="https://fonts.googleapis.com/css2?family=Asap:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <?php $this->assets->outputCss('headercss'); ?>
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/js/mdb.min.js"></script>
+
+
+    <?php $this->assets->outputJs('headerjs'); ?>
+
+    <link rel="shortcut icon" type="image/x-icon" href="<?php echo $this->url->get('img/favicon.png') ?>" />
+</head>
+
+<body>
 
     <?php echo $this->tag->hiddenField(
-            [
-                "APP_URL"
-            ]
-        );
+        [
+            "APP_URL"
+        ]
+    );
     ?>
 
-        <?php
-            $user = $this->session->get('cooperemosapp');
-            if($user) { ?>
+    <?php
+    $user = $this->session->get('cooperemosapp');
+    if ($user) { ?>
 
-            
-            <!-- Header Navbar -->
-            <nav class="mb-5 navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar bg-primary">
-                <img class="navbar-brand rounded-circle" height="50" src="<?php echo $user['AvatarImageUrl']?>"
-                     data-holder-rendered="true">
 
-                <h6 style="color:white"><?php echo $user['Name'] ?></h6>
-                <div class="navbar-nav ml-auto nav-flex-icons">
-                    <i class="material-icons icon-small head-icon-search">search</i>
-                </div>
-            </nav>
+        <!-- Header Navbar -->
+        <nav class="mb-5 navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar bg-primary">
+            <img class="navbar-brand rounded-circle" height="50" src="<?php echo $user['AvatarImageUrl'] ?>" data-holder-rendered="true">
 
-            <div class="content" style="margin-top:100px">
-                <?php echo $this->getContent(); ?>
+            <h6 style="color:white"><?php echo $user['Name'] ?></h6>
+            <div class="navbar-nav ml-auto nav-flex-icons">
+                <i class="material-icons icon-small head-icon-search">search</i>
             </div>
-            
-            
-            <nav class="nav">
-                <?php echo $this->tag->linkTo(['', 
-                    '<i class="material-icons nav__icon">dashboard</i>
-                    <span class="nav__text">Noticias</span>', 
-                    'class' => 'nav__link']) 
-                ?>
+        </nav>
 
-                <?php echo $this->tag->linkTo(['user/mynetwork', 
-                    '<i class="material-icons nav__icon">public</i>
-                    <span class="nav__text">Mi red</span>', 
-                    'class' => 'nav__link']) 
-                ?>
+        <div class="content" style="margin-top:100px">
+            <?php echo $this->getContent(); ?>
+        </div>
 
-                <?php echo $this->tag->linkTo(['plugins/', 
-                    '<i class="material-icons nav__icon">dashboard</i>
-                    <span class="nav__text">Plugins</span>', 
-                    'class' => 'nav__link']) 
-                ?>
+        <div class="space-footer"></div>
 
-                <?php echo $this->tag->linkTo(['user/view/' . $user['UserId'], 
-                    '<i class="material-icons nav__icon">person</i>
-                    <span class="nav__text">Mi perfil</span>', 
-                    'class' => 'nav__link']) 
-                ?>
-                <?php echo $this->tag->linkTo(['help', 
-                    '<i class="material-icons nav__icon">help</i>
-                    <span class="nav__text">Ayuda</span>', 
-                    'class' => 'nav__link']) 
-                ?>
-            </nav>
-            <?php 
-            }else{ ?>
+        <nav class="nav">
+            <?php echo $this->tag->linkTo([
+                '',
+                '<i class="material-icons nav__icon">receipt_long</i>
+                    <span class="nav__text">Noticias</span>',
+                'class' => 'nav__link'
+            ])
+            ?>
 
-                <div class="container">
-                    <?php echo $this->getContent(); ?>
-                </div>
-            <?php
-            }
-        ?>
-        
-    
-    </body>
+            <?php echo $this->tag->linkTo([
+                'user/mynetwork',
+                '<i class="material-icons nav__icon">public</i>
+                    <span class="nav__text">Mi red</span>',
+                'class' => 'nav__link'
+            ])
+            ?>
+
+            <?php echo $this->tag->linkTo([
+                'plugins/',
+                '<i class="material-icons nav__icon">dashboard</i>
+                    <span class="nav__text">Plugins</span>',
+                'class' => 'nav__link'
+            ])
+            ?>
+
+            <?php echo $this->tag->linkTo([
+                'user/view/' . $user['UserId'],
+                '<i class="material-icons nav__icon">person</i>
+                    <span class="nav__text">Mi perfil</span>',
+                'class' => 'nav__link'
+            ])
+            ?>
+            <?php echo $this->tag->linkTo([
+                'help',
+                '<i class="material-icons nav__icon">help</i>
+                    <span class="nav__text">Ayuda</span>',
+                'class' => 'nav__link'
+            ])
+            ?>
+        </nav>
+    <?php
+    } else { ?>
+
+        <div class="container">
+            <?php echo $this->getContent(); ?>
+        </div>
+    <?php
+    }
+    ?>
+
+
+</body>
+
 </html>
 
 
