@@ -10,6 +10,11 @@ class UserController extends ControllerBase
         
     }
 
+    public function mynetworkAction()
+    {
+
+    }
+
     public function viewAction($id){
         $identityUser = IdentityUser::findFirst($id);
 
