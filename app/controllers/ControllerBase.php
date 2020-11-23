@@ -10,6 +10,8 @@ define('_APP_URL',$APP_URL . '/cooperemosapp/');
 
 class ControllerBase extends Controller
 {
+
+
     public function initialize()
     {      
         $this->tag->setDefault("APP_URL", _APP_URL);

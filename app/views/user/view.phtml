@@ -41,10 +41,10 @@
                 <img src="https://mdbootstrap.com/img/Photos/Avatars/img%20(31).jpg" class="rounded-circle" height="100">
             </div>
             <div class="col-8 info">
-                <h4 class="mb-2">Brayan valle</h4>
+                <h4 class="mb-2"><?php echo $user->Person->FullName ?></h4>
                 <p>Ingeniería Informática</p>
-                <p>Estudiante</p>
-                <p>Última Conexión: 2020-09-30</p>
+                <p><?php echo $identityUser->IdentityRole->Name ?></p>
+                <p>Última Conexión: <?php echo $identityUser->LastConnectionDate ?></p>
             </div>
             <div class="col edit position-absolute">
                 <a href="#" class="float-right p-0">
@@ -59,37 +59,38 @@
 <div class="card">
     <div class="card-body">
         <h4>Institución</h4>
-        <p>Politécnico Colombiano Jaime Isaza Cadavid</p>
+        <p><?php echo $personSchoolProgram->SchoolProgram->SchoolDepartment->Entity->Name ?></p>
     </div>
 </div>
 <div class="card">
     <div class="card-body">
         <h4>Facultad</h4>
-        <p>Ingeniería</p>
+        <p><?php echo $personSchoolProgram->SchoolProgram->SchoolDepartment->Name ?></p>
     </div>
 </div>
 <div class="card">
     <div class="card-body">
         <h4>Programa Académico</h4>
-        <p>Ingeniería Informática</p>
+        <p><?php echo $personSchoolProgram->SchoolProgram->Name ?></p>
     </div>
 </div>
 <div class="card">
     <div class="card-body">
         <h4>Edad</h4>
-        <p>23 años</p>
+        <?php $_age = floor((time() - strtotime($user->Person->BirthDate)) / 31556926); ?>
+        <p><?php echo $_age ?> años</p>
     </div>
 </div>
 <div class="card">
     <div class="card-body">
         <h4>Correo Electrónico</h4>
-        <p>brayan_valle82142@elpoli.edu.co</p>
+        <p><?php echo $user->Person->Email ?></p>
     </div>
 </div>
 <div class="card">
     <div class="card-body">
         <h4>Celular</h4>
-        <p>3007444471</p>
+        <p><?php echo $user->Person->PhoneNumber ?></p>
     </div>
 </div>
 <div class="card">
@@ -104,3 +105,6 @@
         <p>Medellín</p>
     </div>
 </div>
+
+
+<?php echo $this->getContent() ?>

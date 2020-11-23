@@ -63,33 +63,34 @@
             
             
             <nav class="nav">
-                <a href="#" class="nav__link nav__active">
-                    <i class="material-icons nav__icon">dashboard</i>
-                    <span class="nav__text">Noticias</span>
-                </a>
-                <a href="#" class="nav__link">
-                    <i class="material-icons nav__icon">public</i>
-                    <span class="nav__text">Mi red</span>
-                </a>
-                <a href="#" class="nav__link">
-                    <i class="material-icons nav__icon">dashboard</i>
-                    <span class="nav__text">Apps</span>
-                </a>
+                <?php echo $this->tag->linkTo(['', 
+                    '<i class="material-icons nav__icon">dashboard</i>
+                    <span class="nav__text">Noticias</span>', 
+                    'class' => 'nav__link']) 
+                ?>
+
+                <?php echo $this->tag->linkTo(['network/', 
+                    '<i class="material-icons nav__icon">public</i>
+                    <span class="nav__text">Mi red</span>', 
+                    'class' => 'nav__link']) 
+                ?>
+
+                <?php echo $this->tag->linkTo(['plugins/', 
+                    '<i class="material-icons nav__icon">dashboard</i>
+                    <span class="nav__text">Plugins</span>', 
+                    'class' => 'nav__link']) 
+                ?>
 
                 <?php echo $this->tag->linkTo(['user/view/' . $user['UserId'], 
                     '<i class="material-icons nav__icon">person</i>
                     <span class="nav__text">Mi perfil</span>', 
                     'class' => 'nav__link']) 
                 ?>
-
-                <a href="" class="nav__link">
-                    <i class="material-icons nav__icon">person</i>
-                    <span class="nav__text">Mi perfil</span>
-                </a>
-                <a href="#" class="nav__link">
-                    <i class="material-icons nav__icon">help</i>
-                    <span class="nav__text">Ayuda</span>
-                </a>
+                <?php echo $this->tag->linkTo(['help', 
+                    '<i class="material-icons nav__icon">help</i>
+                    <span class="nav__text">Ayuda</span>', 
+                    'class' => 'nav__link']) 
+                ?>
             </nav>
             <?php 
             }else{ ?>

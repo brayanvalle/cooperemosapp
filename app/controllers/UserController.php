@@ -11,6 +11,17 @@ class UserController extends ControllerBase
     }
 
     public function viewAction($id){
+        $identityUser = IdentityUser::findFirst($id);
+
+        $person = Person::findFirst('PersonId = "' . $identityUser->ExternalUserProfileId . '"');
+
+        $this->view->user = json_decode(json_encode([
+            'IdentityUser' => $identityUser,
+            'Person' => $person
+        ], FALSE));
+
+        $this->view->identityUser = $identityUser;
+        $this->view->personSchoolProgram = PersonSchoolProgram::findFirst('PersonId = ' . $person->Id);
         
     }
 

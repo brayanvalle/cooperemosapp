@@ -2,6 +2,11 @@
 
 $router = $di->getRouter();
 
-// Define your routes here
+// $router->notFound(array(
+//     'controller' => 'index',
+//     'action' => 'notFound'
+// ));
 
 $router->handle();
+
+

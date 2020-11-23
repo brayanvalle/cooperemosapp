@@ -58,7 +58,19 @@ body {
 .nav__active{
     border-top: 2px solid;
 }
+
+
 .bg-primary{
+    background-color: var(--poli-green-dark) !important;
+}
+
+.btn-primary{
+    color: white !important; 
+    background-color: var(--poli-green-dark) !important;
+}
+
+.btn-primary:hover {
+    color: white !important; 
     background-color: var(--poli-green-dark) !important;
 }
 

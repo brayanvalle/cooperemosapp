@@ -41,6 +41,8 @@
 <script>
   $(document).ready(function(){
     const _APP_URL_ = $('#APP_URL').val();
+
+    
     
     const _endpoint = {
       doLike: 'post/doLike/',
@@ -49,8 +51,7 @@
 
     $('#post_like_btn').click(function(){
       const postId = $(this).attr('post-id');
-      $(this).toggleClass('text-danger');
-      doLike(postId);
+      doLike(postId, this);
     });
 
     $('#post_share_btn').click(function(){
@@ -96,7 +97,7 @@
 
     }
 
-    function doLike(postId){
+    function doLike(postId, el){
         const request = doRequest({
             url: _endpoint.doLike + postId
         });
