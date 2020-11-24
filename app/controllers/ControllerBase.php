@@ -79,7 +79,8 @@ class ControllerBase extends Controller
         $this->assets
             ->collection('headerjs')
             ->addJs('js/app.js')
-            ->addJs('js/utils.js');
+            ->addJs('js/utils.js')
+            ->addJs('js/tooltip.js');
         //     ->addJs('assets/plugins/jquery/formatNumber.js')
         //     ->addJs('assets/plugins/bootstrap/js/tether.min.js')
         //     ->addJs('assets/plugins/bootstrap/js/bootstrap.min.js')
