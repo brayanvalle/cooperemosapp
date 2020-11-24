@@ -5,6 +5,9 @@
         vertical-align: middle;
     }
 
+    a{
+        font-size: 1em;
+    }
     .card {
         border: 2px solid #919191;
     }
@@ -15,10 +18,9 @@
             <a href="#">
                 <div class="card">
                     <div class="card-body p-2 text-center">
-                        <span class="material-icons">
-                            sports_esports
-                        </span>
-                        <p>Actividades</p>
+                        <?php echo $this->tag->linkTo('plugins/game',
+                        '<span class="material-icons">sports_esports</span>
+                        <p>Actividades</p>')?>
                     </div>
                 </div>
             </a>
@@ -27,9 +29,7 @@
             <a href="#">
                 <div class="card">
                     <div class="card-body p-2 text-center">
-                        <span class="material-icons">
-                            language
-                        </span>
+                        <span class="material-icons">language</span>
                         <p class="text-center">Mis movilidades</p>
                     </div>
                 </div>

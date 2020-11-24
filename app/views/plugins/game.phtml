@@ -1,0 +1,48 @@
+<style>
+    .network-profile {
+        margin: 10px;
+    }
+
+    .btn-subscribe:hover,
+    .btn-subscribe {
+        background-color: var(--poli-green-dark) !important;
+        color: #fff !important;
+        font-size: 0.8em;
+        padding: 7px;
+        margin: 5px 0 0 0;
+    }
+
+    small {
+        font-size: 0.8em;
+    }
+
+    .network-profile hr {
+        width: 80%;
+        border: 1px solid #c7c7c7;
+    }
+</style>
+
+<?php if(count($page->items) > 0){
+    foreach($page->items as $game): ?>     
+
+<div class="network-profile">
+    <div class="row">
+        <div class="col-2">
+            <i class="fas fa-gamepad rounded-circle fa-3x"></i>
+        </div>
+        <div class="col">
+            <h5 class="name m-0"><?php echo $game->Title ?></h5>
+            <div class="content post-feed-resumen mt-2">
+                    <?php echo $game->Body ?>
+            </div>  
+            <div class="col-md-2">
+            <?php echo $this->tag->linkTo(['plugins/gameview/'.$game->Id,
+            'Ver', 'class' => 'btn btn-subscribe d-block'])?>
+            </div>
+           
+        </div>
+    </div>
+    <hr>
+</div>
+<?php endforeach;
+} ?> 

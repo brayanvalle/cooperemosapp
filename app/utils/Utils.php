@@ -17,6 +17,10 @@ class Utils{
     public static function Http(): Http{
         return new Http();
     }
+
+    public static function Functions(): Functions{
+        return new Functions();
+    }
 }
 
 ?>

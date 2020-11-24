@@ -6,6 +6,17 @@
 defined('BASE_PATH') || define('BASE_PATH', getenv('BASE_PATH') ?: realpath(dirname(__FILE__) . '/../..'));
 defined('APP_PATH') || define('APP_PATH', BASE_PATH . '/app');
 
+
+$stage = 'development';
+
+
+if($stage === 'production')
+    define('_APP_LOCAL_PATH_' , '/var/www/html/cooperemosapp/');
+else
+    define('_APP_LOCAL_PATH_' , 'C:/xampp/htdocs/cooperemosapp/');
+
+
+
 return new \Phalcon\Config([
     'database' => [
         'adapter'     => 'Mysql',

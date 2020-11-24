@@ -24,7 +24,7 @@
             <div class="social-meta">
             <!-- <p class="blue-text">#awesome #bboy #battle #breaking #cool</p> -->
             <div class="social-counter float-right">
-                <i class="far fa-heart fa-lg" id="post_like_btn" post-id=<?php echo $post->Id ?>><span class="ml-2" like-count=<?php echo $post->LikesCount ?> id="post_like_<?php echo $post->Id ?>"><?php echo $post->LikesCount ?></span></i>
+                <i class="far fa-heart fa-lg post_like_btn" post-id=<?php echo $post->Id ?>><span class="ml-2" like-count=<?php echo $post->LikesCount ?> id="post_like_<?php echo $post->Id ?>"><?php echo $post->LikesCount ?></span></i>
                 <i class="far fa-share-square fa-lg ml-3" id="post_share_btn"  post-id=<?php echo $post->Id ?>><span class="ml-2"><?php echo $post->ShareCount ?></span></i>
             </div>           
             </div>
@@ -42,6 +42,8 @@
   $(document).ready(function(){
     const _APP_URL_ = $('#APP_URL').val();
 
+    console.log(_APP_URL_);
+
     
     
     const _endpoint = {
@@ -49,7 +51,8 @@
       doShare: 'post/doShare/'
     };
 
-    $('#post_like_btn').click(function(){
+    $('.post_like_btn').click(function(){
+      console.log("click");
       const postId = $(this).attr('post-id');
       doLike(postId, this);
     });
@@ -99,7 +102,7 @@
 
     function doLike(postId, el){
         const request = doRequest({
-            url: _endpoint.doLike + postId
+            url: _APP_URL_ + _endpoint.doLike + postId
         });
         request.done(function(response){
           if(response.action === 'LIKE')
