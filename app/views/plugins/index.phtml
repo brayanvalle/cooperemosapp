@@ -43,10 +43,9 @@
             <a href="#">
                 <div class="card" id="plugins_recomendations_btn">
                     <div class="card-body p-2 text-center">
-                        <span class="material-icons">
-                            grade
-                        </span>
-                        <p>Recomendaciones</p>
+                        <?php echo $this->tag->linkTo('plugins/networkandagreement',
+                        '<span class="material-icons">share</span>
+                        <p>Convenios y Redes</p>')?>
                     </div>
                 </div>
             </a>

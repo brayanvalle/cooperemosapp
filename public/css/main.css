@@ -17,7 +17,7 @@ body {
   font-size: 2rem;
 }
 
-.nav {
+.nav__footer {
   position: fixed;
   bottom: 0;
   width: 100%;

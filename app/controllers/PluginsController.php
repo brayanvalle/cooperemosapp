@@ -103,4 +103,14 @@ class PluginsController extends ControllerBase
 
         $this->view->mobilityReport = $mobilityReport;
     }
+
+    public function networkandagreementAction(){
+
+        $pluginService = new PluginService();
+
+        $result = $pluginService->getNetworkAndAgreementReport();
+
+        $this->view->networkReport = $result['Networks'];
+        $this->view->agreementReport = $result['Agreements'];
+    }
 }

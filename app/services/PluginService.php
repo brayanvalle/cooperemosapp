@@ -56,4 +56,33 @@ class PluginService{
 
     }
 
+
+    public function getNetworkAndAgreementReport(){
+        $networks = NetworkAndAsociation::find(["order" => "CreationDate DESC","limit" => 10]);
+        $agreements = Agreement::find(["order" => "InitialDate DESC", "limit" => 10]);
+        $networksDao =[];
+        $agreementsDao =[];
+        foreach($networks as $network){
+            array_push($networksDao,Utils::ObjectUtil()->array2Obj([
+                'Name' => $network->Name,
+                'SchoolDepartment' => $network->SchoolDepartment->Name,
+                'Type' => $network->NetworkAndAsociationType->Name
+            ]));
+        }
+
+        foreach($agreements as $agreement){
+            array_push($agreementsDao,Utils::ObjectUtil()->array2Obj([
+                'PurposeDescription' => $agreement->PurposeDescription,
+                'Type' => $agreement->AgreementType->Name,
+                'LocationCity' => $agreement->LocationCity->Name
+            ]));
+        }
+
+        return [
+            'Networks' => $networksDao,
+            'Agreements' => $agreementsDao
+        ];
+
+    }
+
 }
