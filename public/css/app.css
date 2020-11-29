@@ -41,3 +41,13 @@ a {
     height: 100vh;
     visibility: hidden;
 }
+
+
+
+.tooltip-plugin-top{
+  transform: translate3d(60px, 662px, 0px) !important;
+}
+
+.tooltip-myProfile-top{
+  transform: translate3d(178px, 662px, 0px) !important;
+}

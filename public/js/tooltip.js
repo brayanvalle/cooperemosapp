@@ -2,13 +2,15 @@ const toolTipOptions = {
   news: {
     tooltips: [
       {
+        placement: "right",
         element: "#navbar_news",
         title: "Noticias",
         message: "Aquí podrás ver las noticias, da click para conocer más",
-        isNavbarElement : true,
+        isNavbarElement: true,
       },
       {
         element: ".post_like_btn_0",
+        placement: "right",
         title: "Me gusta",
         message: "Podrás dar me gusta a las publicaciones que más te interesen",
         next: {
@@ -19,6 +21,7 @@ const toolTipOptions = {
       {
         element: "#post_share_btn_0",
         title: "Compartir",
+        placement: "right",
         message: "Podrás compartir las publicaciones con las personas",
         next: {
           type: "myNetwork",
@@ -32,12 +35,14 @@ const toolTipOptions = {
       {
         element: "#navbar_myNetwork",
         title: "Mi red",
+        placement: "right",
         message: "Aquí podrás ver tu red",
-        isNavbarElement : true,
+        isNavbarElement: true,
       },
       {
         element: "#myNetwork_subscribe_btn_0",
         title: "Subscribete",
+        placement: "bottom",
         message: "Aquí podrás subscribirte",
         next: {
           type: "plugins",
@@ -49,12 +54,15 @@ const toolTipOptions = {
   plugins: {
     tooltips: [
       {
+        placement: "bottom",
+        cssClass: "tooltip-plugin-top",
         element: "#navbar_plugins",
         title: "Plugins",
         message: "Aquí podrás ver todas las actividades",
-        isNavbarElement : true,
+        isNavbarElement: true,
       },
       {
+        placement: "bottom",
         element: "#plugins_activities_btn",
         title: "Actividades",
         message: "Aquí verás diferentes actividades y juegos",
@@ -64,6 +72,7 @@ const toolTipOptions = {
         },
       },
       {
+        placement: "bottom",
         element: "#plugins_myMovilities_btn",
         title: "Mis movilidades",
         message: "Acá puedes ver tus movilidades",
@@ -73,6 +82,7 @@ const toolTipOptions = {
         },
       },
       {
+        placement: "bottom",
         element: "#plugins_recomendations_btn",
         title: "Recomendaciones",
         message: "Acá puedes ver tus recomendaciones",
@@ -86,10 +96,12 @@ const toolTipOptions = {
   myProfile: {
     tooltips: [
       {
+        cssClass: "tooltip-myProfile-top",
+        placement: "bottom",
         element: "#navbar_myProfile",
         title: "Mi perfil",
         message: "Aquí podrás ver tu perfil",
-        isNavbarElement : true,
+        isNavbarElement: true,
       },
     ],
   },
@@ -127,17 +139,20 @@ class Tooltip {
     const tooltip = this.getTooltipFromOptions(params);
     this.currentTooltip = tooltip;
     this.setTooltipConfig();
-    $("body").css("overflow", "hidden");
-
   }
 
   setTooltipConfig() {
     $(this.currentTooltip.element).attr("data-toggle", "popover");
+    $(this.currentTooltip.element).attr(
+      "data-placement",
+      this.currentTooltip.placement
+    );
     $(this.currentTooltip.element).attr("title", this.currentTooltip.title);
     $(this.currentTooltip.element).attr(
       "data-content",
       this.currentTooltip.message
     );
+
     $(this.currentTooltip.element).popover("show");
     $(this.currentTooltip.element).css({ backgroundColor: "#f7ffc4" });
 
@@ -147,6 +162,14 @@ class Tooltip {
         data-type="${this.currentTooltip.next.type}" data-position=${this.currentTooltip.next.position}
         >Siguiente</button>`
       );
+    }
+    $("body").css("overflow", "hidden");
+    if (this.currentTooltip.isNavbarElement) {
+      this.blurOnTutorial();
+    }
+
+    if (this.currentTooltip.cssClass) {
+      $(".popover").addClass(this.currentTooltip.cssClass);
     }
   }
   blurOnTutorial() {
