@@ -90,4 +90,14 @@ class PluginsController extends ControllerBase
             return $this->Error($e->getMessage());
         }
     }
+
+    public function mymobilityAction(){
+        
+        $user = $this->GetSessionUser();
+        $pluginService = new PluginService();
+
+        $mobilityReport = $pluginService->getUserMobilityReport($user['ExternalUser']->Id);
+
+        $this->view->mobilityReport = $mobilityReport;
+    }
 }

@@ -1,0 +1,135 @@
+
+
+
+
+<div class="m-3">
+<p class="note note-info">
+    <strong>Tip:</strong> 
+    En esta secciòn se encuentra el registro de las movilidades que has realizado. 
+    Puedes ver el detalle de cada uno dando clic en el ìcono: <strong> <i class="fas fa-eye" style="cursor:pointer"></i> </strong>    
+</p>
+</div>
+
+
+<div class="m-3">
+    <div class="row">
+        <div class="col-sm-12 table-responsive">
+            <table id="dtMaterialDesignExample" class="table" cellspacing="0" width="100%">
+                <thead>
+                    <tr>
+                        <th class="text-center">Código</th>
+                        <th class="text-center">Fecha</th>
+                        <th class="text-center">Destino</th>
+                        <th class="text-center">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php if(count($mobilityReport) > 0){
+                        foreach($mobilityReport as $element): ?>
+                        <tr>
+                            <td class="text-center"><?php echo $element->Code?></td>
+                            <td class="text-center"><?php echo $element->DateFrom?></td>
+                            <td class="text-center"><?php echo $element->DestinationLocation?></td>
+                            <td class="text-center">
+                                <i class="viewMobilityDetail fas fa-eye" data-mobility-id=<?php echo $element->Id ?> style="cursor:pointer"></i>
+                            </td>   
+                        </tr>
+                    <?php endforeach; } ?>    
+                </tobody>
+            </table>        
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="viewMobiltyDetailModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="mobilityDetailCode"></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" id="mobilityDetailBody">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<script>
+
+$(document).ready(function(){
+    const _APP_URL_ = $('#APP_URL').val();   
+    const _endpoint = {
+        getMobilityDetail: 'api/getMobilityDetail/'
+    };
+    $('.viewMobilityDetail').click(function(){
+        const mobilityId = $(this).attr('data-mobility-id');
+        getMobilityDetail(mobilityId);
+    });
+
+    function getMobilityDetail(mobilityId){
+        const request = doRequest({
+            url: _APP_URL_ + _endpoint.getMobilityDetail + mobilityId
+        });
+
+        request.done(function(response){
+            renderMobilityDetail(response);
+        });
+
+        request.fail(function(e){
+            alert(e);
+        });
+    }
+
+    function renderMobilityDetail(mobility){
+        $('#mobilityDetailCode').html(`Código: ${mobility.Code}`);
+
+        let templateBody = `
+            <p><strong>Fecha inicial:</strong> ${mobility.DateFrom}</p>
+            <p><strong>Fecha final:</strong> ${mobility.DateTo}</p>            
+            <p><strong>Destino:</strong> ${mobility.DestinationLocation}</p>
+            <p><strong>Tipo:</strong> ${mobility.Type}</p>
+            <p><strong>Objeto:</strong> ${mobility.Objective}</p>
+        `;
+
+        let tableDataBody = '';
+
+        for(let status of mobility.Status){
+            let tmp = `
+            <tr>
+                <td>${status.Date}</td>
+                <td>${status.StatusName}</td>
+            </tr>
+            `;
+
+            tableDataBody = tableDataBody + tmp;
+        }
+
+        const table = `
+        <table class="table">
+            <thead class="white-text" style="background-color: #196844 !important;">
+                <tr>
+                <th scope="col">Fecha</th>
+                <th scope="col">Estado</th>
+                </tr>
+            </thead>
+            <tbody>${tableDataBody}</tbody>
+        </table>
+        `;
+
+        templateBody = templateBody + table;
+
+        $('#mobilityDetailBody').html(templateBody);
+
+        $('#viewMobiltyDetailModal').modal('show');
+    }
+});
+
+</script>
+

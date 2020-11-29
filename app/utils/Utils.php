@@ -21,6 +21,10 @@ class Utils{
     public static function Functions(): Functions{
         return new Functions();
     }
+
+    public static function ObjectUtil(): ObjectUtil{
+        return new ObjectUtil();
+    }
 }
 
 ?>

@@ -13,7 +13,8 @@ class ApiController extends Controller{
     }
 
     private function Response($status , $header , $body){
-        $response=new Response();
+        $response=new Response();        
+        $response->setHeader('Content-Type', 'application/json; charset=utf-8');
         $response->setStatusCode($status, $header);
         $response->setJsonContent($body);
         return $response;
@@ -28,6 +29,20 @@ class ApiController extends Controller{
         return $this->Response(400 , 'Error' , $message);
     }
 
+
+    public function getMobilityDetailAction($mobilityId){
+        try{
+            $pluginService = new PluginService();
+
+            $result = $pluginService->getMobilityReport($mobilityId);
+
+            return $this->Ok($result);
+        }catch(Error $e){
+            return $this->Error($e);
+        }
+       
+    }
+    
 
     public function createUserAction(){
         

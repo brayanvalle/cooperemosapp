@@ -20,7 +20,7 @@ else
 return new \Phalcon\Config([
     'database' => [
         'adapter'     => 'Mysql',
-        'host'        => '192.168.1.17',
+        'host'        => 'localhost',
         'username'    => 'developer',
         'password'    => 'developer',
         'dbname'      => 'nicooperationdbv2',
