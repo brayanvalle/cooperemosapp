@@ -20,6 +20,7 @@
         width: 80%;
         border: 1px solid #c7c7c7;
     }
+
 </style>
 
 <div class="network-profile">
@@ -30,7 +31,7 @@
         <div class="col">
             <h5 class="name m-0">Adriana Portocarrero</h5>
             <small>Directora | Dirección Cooperación Nacional E Internacional</small>
-            <button class="btn btn-subscribe d-block">Subscribirme</button>
+            <button class="btn btn-subscribe d-block" id="myNetwork_subscribe_btn_0">Subscribirme</button>
         </div>
     </div>
     <hr>
@@ -49,3 +50,12 @@
     </div>
     <hr>
 </div>
+
+<script>
+    $(document).ready(function() {
+        new Tooltip().show({
+            type: 'myNetwork',
+            position: 1
+        });
+    });
+</script>

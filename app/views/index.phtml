@@ -36,18 +36,17 @@
 
 <body>
 
-    <?php echo $this->tag->hiddenField(
-        [
-            "APP_URL"
-        ]
-    );
+    <?php 
+        echo $this->tag->hiddenField(["APP_URL"]);
+        echo $this->tag->hiddenField(["SHOW_TOOLTIP" , "value" => "True"]);
     ?>
 
     <?php
     $user = $this->session->get('cooperemosapp');
     if ($user) { ?>
 
-
+        <div id="blur_body"></div>
+        
         <!-- Header Navbar -->
         <nav class="mb-5 navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar bg-primary">
             <img class="navbar-brand rounded-circle" height="50" src="<?php echo $user['AvatarImageUrl'] ?>" data-holder-rendered="true">
@@ -64,12 +63,12 @@
 
         <div class="space-footer"></div>
 
-        <nav class="nav">
+        <nav class="nav" id="btn_navbar">
             <?php echo $this->tag->linkTo([
                 '',
                 '<i class="material-icons nav__icon">receipt_long</i>
                     <span class="nav__text">Noticias</span>',
-                'class' => 'nav__link'
+                'class' => 'nav__link', 'id' => 'navbar_news'
             ])
             ?>
 
@@ -77,7 +76,7 @@
                 'user/mynetwork',
                 '<i class="material-icons nav__icon">public</i>
                     <span class="nav__text">Mi red</span>',
-                'class' => 'nav__link'
+                'class' => 'nav__link', 'id' => 'navbar_myNetwork'
             ])
             ?>
 
@@ -85,7 +84,7 @@
                 'plugins/',
                 '<i class="material-icons nav__icon">dashboard</i>
                     <span class="nav__text">Plugins</span>',
-                'class' => 'nav__link'
+                'class' => 'nav__link', 'id' => 'navbar_plugins'
             ])
             ?>
 
@@ -93,14 +92,14 @@
                 'user/view/' . $user['UserId'],
                 '<i class="material-icons nav__icon">person</i>
                     <span class="nav__text">Mi perfil</span>',
-                'class' => 'nav__link'
+                'class' => 'nav__link', 'id' => 'navbar_myProfile'
             ])
             ?>
             <?php echo $this->tag->linkTo([
                 'help',
                 '<i class="material-icons nav__icon">help</i>
                     <span class="nav__text">Ayuda</span>',
-                'class' => 'nav__link'
+                'class' => 'nav__link', 'id' => 'navbar_help'
             ])
             ?>
         </nav>

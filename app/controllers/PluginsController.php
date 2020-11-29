@@ -10,6 +10,9 @@ class PluginsController extends ControllerBase
         
     }
 
+    public function reportAction(){
+        
+    }
 
     public function gameAction(){
         $games = PluginGamePost::find();
