@@ -5,29 +5,36 @@
         vertical-align: middle;
     }
 
-    a{
+    a {
         font-size: 1em;
     }
+
     .card {
         border: 2px solid #919191;
+    }
+
+    .popover {
+        transform: translate3d(36px, 386px, 0px)!important;
     }
 </style>
 <div class="m-3">
     <div class="row row-cols-2">
         <div class="col">
             <a href="#">
-                <div class="card">
+                <div class="card" id="plugins_activities_btn">
                     <div class="card-body p-2 text-center">
-                        <?php echo $this->tag->linkTo('plugins/game',
-                        '<span class="material-icons">sports_esports</span>
-                        <p>Actividades</p>')?>
+                        <?php echo $this->tag->linkTo([
+                            'plugins/game',
+                            '<span class="material-icons">sports_esports</span>
+                            <p>Actividades</p>', 'id' => 'plugin_activities',
+                        ]) ?>
                     </div>
                 </div>
             </a>
         </div>
         <div class="col">
             <a href="#">
-                <div class="card">
+                <div class="card" id="plugins_myMovilities_btn">
                     <div class="card-body p-2 text-center">
                         <span class="material-icons">language</span>
                         <p class="text-center">Mis movilidades</p>
@@ -37,7 +44,7 @@
         </div>
         <div class="col mt-3">
             <a href="#">
-                <div class="card">
+                <div class="card" id="plugins_recomendations_btn">
                     <div class="card-body p-2 text-center">
                         <span class="material-icons">
                             grade
@@ -49,3 +56,11 @@
         </div>
     </div>
 </div>
+<script>
+    $(document).ready(function() {
+        new Tooltip().show({
+            type: 'plugins',
+            position: 1
+        });
+    });
+</script>

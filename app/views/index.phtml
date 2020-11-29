@@ -36,11 +36,9 @@
 
 <body>
 
-    <?php echo $this->tag->hiddenField(
-        [
-            "APP_URL"
-        ]
-    );
+    <?php 
+        echo $this->tag->hiddenField(["APP_URL"]);
+        echo $this->tag->hiddenField(["SHOW_TOOLTIP" , "value" => "True"]);
     ?>
 
     <?php
@@ -86,7 +84,7 @@
                 'plugins/',
                 '<i class="material-icons nav__icon">dashboard</i>
                     <span class="nav__text">Plugins</span>',
-                'class' => 'nav__link'
+                'class' => 'nav__link', 'id' => 'navbar_plugins'
             ])
             ?>
 
@@ -94,14 +92,14 @@
                 'user/view/' . $user['UserId'],
                 '<i class="material-icons nav__icon">person</i>
                     <span class="nav__text">Mi perfil</span>',
-                'class' => 'nav__link'
+                'class' => 'nav__link', 'id' => 'navbar_myProfile'
             ])
             ?>
             <?php echo $this->tag->linkTo([
                 'help',
                 '<i class="material-icons nav__icon">help</i>
                     <span class="nav__text">Ayuda</span>',
-                'class' => 'nav__link'
+                'class' => 'nav__link', 'id' => 'navbar_help'
             ])
             ?>
         </nav>

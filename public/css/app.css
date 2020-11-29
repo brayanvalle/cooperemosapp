@@ -32,10 +32,6 @@ a {
   color: #fff;
 }
 
-.popover {
-  transform: translate3d(75px, 630px, 0px)!important;
-}
-
 #blur_body{
     position: fixed;
     top: 0;
