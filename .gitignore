@@ -1,9 +1,5 @@
 cache
-.env
 app/library/vendor
 
-app/config/env.php
-
-
-
+env.php
 public/media/*

@@ -8,11 +8,7 @@ define('APP_PATH', BASE_PATH . '/app');
 
 try {
 
-    include APP_PATH . '/library/vendor/autoload.php';
-
-    $dotenv = Dotenv\Dotenv::createImmutable(BASE_PATH);
-    $dotenv->load();
-    
+    include APP_PATH . '/library/vendor/autoload.php';   
 
     /**
      * The FactoryDefault Dependency Injector automatically registers
