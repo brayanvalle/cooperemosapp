@@ -17,7 +17,7 @@ class PluginService{
         foreach($mobilityStatus as $mobStatus){
             array_push($mobilityStatusDto,[
                 'Current' => $mobStatus->Current,
-                'Date' => Date($mobStatus->Date, ''),
+                'Date' => $mobStatus->Date,
                 'StatusName' => $mobStatus->MobilityStatus->Name
             ]);
         }

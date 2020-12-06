@@ -14,6 +14,7 @@ class ControllerBase extends Controller
 
     public function initialize()
     {      
+        $this->view->sessionUser = $this->session->get('cooperemosapp');
         $this->tag->setDefault("APP_URL", _APP_URL);
         $this->handleSession();
         $this->loadAssets();

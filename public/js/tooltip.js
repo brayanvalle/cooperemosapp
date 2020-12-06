@@ -22,7 +22,7 @@ const toolTipOptions = {
         element: "#post_share_btn_0",
         title: "Compartir",
         placement: "right",
-        message: "Podrás compartir las publicaciones con las personas",
+        message: "Podrás compartir las publicaciones como un link externo",
         next: {
           type: "myNetwork",
           position: 0,
@@ -43,7 +43,7 @@ const toolTipOptions = {
         element: "#myNetwork_subscribe_btn_0",
         title: "Subscribete",
         placement: "bottom",
-        message: "Aquí podrás subscribirte",
+        message: "Aquí podrás subscribirte a las publicaciones que compartan otros usuarios.",
         next: {
           type: "plugins",
           position: 0,
@@ -58,7 +58,7 @@ const toolTipOptions = {
         cssClass: "tooltip-plugin-top",
         element: "#navbar_plugins",
         title: "Plugins",
-        message: "Aquí podrás ver todas las actividades",
+        message: "Aquí podrás ver las extensiones que tenemos para ti.",
         isNavbarElement: true,
       },
       {
@@ -75,7 +75,7 @@ const toolTipOptions = {
         placement: "bottom",
         element: "#plugins_myMovilities_btn",
         title: "Mis movilidades",
-        message: "Acá puedes ver tus movilidades",
+        message: "Aquí puedes ver el historial de tus movilidades",
         next: {
           type: "plugins",
           position: 3,
@@ -84,8 +84,8 @@ const toolTipOptions = {
       {
         placement: "bottom",
         element: "#plugins_recomendations_btn",
-        title: "Recomendaciones",
-        message: "Acá puedes ver tus recomendaciones",
+        title: "Convenios y Redes",
+        message: "Aquí puedes ver el listado de Convenios y Redes.",
         next: {
           type: "myProfile",
           position: 0,
@@ -101,6 +101,27 @@ const toolTipOptions = {
         element: "#navbar_myProfile",
         title: "Mi perfil",
         message: "Aquí podrás ver tu perfil",
+        isNavbarElement: true
+      },
+      {
+          placement: "bottom",
+          element: "#userProfileCard",
+          title: "Mi perfil",
+          message: "En esta sección se encuentra toda tu información personal.",
+          next: {
+            type: "help",
+            position: 0,
+        }
+      },
+    ],
+  },
+  help: {
+    tooltips: [
+      {
+        placement: "left",
+        element: "#navbar_help",
+        title: "Ayuda",
+        message: "En caso de que necesites ayuda, ingresa a esta sección.",
         isNavbarElement: true,
       },
     ],
@@ -110,7 +131,7 @@ const toolTipOptions = {
 class Tooltip {
   constructor() {
     $(".popover").remove();
-    this.isTooltipActive = $("#SHOW_TOOLTIP").val() === "True";
+    this.isTooltipActive = $("#SHOW_TOOLTIP").val() === "TRUE";
     this.currentTooltip = {};
     this.nextElement = {};
   }

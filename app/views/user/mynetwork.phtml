@@ -51,11 +51,44 @@
     <hr>
 </div>
 
+
+<div class="modal fade" id="confirmSubscriptionModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+  aria-hidden="true">
+
+  <!-- Add .modal-dialog-centered to .modal-dialog to vertically center the modal -->
+  <div class="modal-dialog modal-dialog-centered" role="document">
+
+
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Confirmar subscripción</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Al suscribirte verás en tu sección de noticias 
+        las publicaciones que comparta este usuario. Presiona <strong>Aceptar</strong>
+        para confirmar. O presionar <strong>Cancelar</strong> para cerrar este mensaje.
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-grey" data-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-primary">Aceptar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <script>
     $(document).ready(function() {
         new Tooltip().show({
             type: 'myNetwork',
             position: 1
         });
+    });
+
+
+    $('.btn-subscribe').click(function(){
+        $('#confirmSubscriptionModal').modal('show');
     });
 </script>

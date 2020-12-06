@@ -1,3 +1,16 @@
+
+
+<style>
+
+.abcRioButton{
+    display: inline-flex !important;
+}
+
+</style>
+<meta name="google-signin-client_id" content="203635050658-poij86pv76oh1v0teuf1o5hfdgb4ggs9.apps.googleusercontent.com">
+
+<script src="https://apis.google.com/js/platform.js" async defer></script>
+
 <div class="login-view mt-5 m-3">
     <div class="login-header text-center">
         <h2 class="login-app-title">Internacionalización App</h1>
@@ -24,7 +37,11 @@
                 
                 <a href="">Crear cuenta nueva</a>
                 <p class="mt-3">O inicia sesión con tu correo.</p>
+                <div class="g-signin2" data-onsuccess="onSignIn"></div>
+
             <?php echo $this->tag->endForm(); ?>  
         </div>
     </div>
 </div>
+
+

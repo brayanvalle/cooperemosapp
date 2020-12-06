@@ -19,9 +19,12 @@ class SessionController extends ControllerBase
                     'RoleKey'  => $identityUser->IdentityRole->KeyName,
                     'RoleName' => $identityUser->IdentityRole->Name,
                     'AvatarImageUrl' => $identityUser->AvatarImageUrl,
-                    'ExternalUser' => $externalUser
+                    'ExternalUser' => $externalUser,
+                    'FirstLogin' => $identityUser->FirstLogin == 1 ? 'TRUE' : 'FALSE'
                 ]
-        );		
+        );	
+        
+        $this->session->set('FIRST_LOGIN', $identityUser->FirstLogin == 1 ? 'TRUE' : 'FALSE');
 	}
 	private function _unregisterSession(){
 		$this->session->remove($this->SESSION_NAME);
@@ -55,9 +58,9 @@ class SessionController extends ControllerBase
     
             }
 
-            $this->UpdateUserSignIn($user);
             //User credentials are correct
-            $this->_registerSession($user);	
+            $this->_registerSession($user);	            
+            $this->UpdateUserSignIn($user);
             return $this->dispatcher->forward([ 'controller' => 'index', 'action' => 'index']);
 			
         }
@@ -98,6 +101,7 @@ class SessionController extends ControllerBase
 
     private function UpdateUserSignIn($user){
         $user->LastConnectionDate = Utils::Date()->getDate();
+        $user->FirstLogin = 0;
         $user->save();
     }
 

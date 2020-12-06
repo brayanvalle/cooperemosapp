@@ -37,12 +37,12 @@
 <body>
 
     <?php 
-        echo $this->tag->hiddenField(["APP_URL"]);
-        echo $this->tag->hiddenField(["SHOW_TOOLTIP" , "value" => "True"]);
-    ?>
-
-    <?php
     $user = $this->session->get('cooperemosapp');
+    
+    echo $this->tag->hiddenField(["APP_URL"]);
+    echo $this->tag->hiddenField(["SHOW_TOOLTIP" , "value" => $this->session->get('FIRST_LOGIN')]);
+
+
     if ($user) { ?>
 
         <div id="blur_body"></div>
@@ -130,6 +130,8 @@
                 document.getElementById("navbar_top").style.top = "-50px";
             }
             prevScrollpos = currentScrollPos;
-        }
+        };
+
+        
     });
 </script>

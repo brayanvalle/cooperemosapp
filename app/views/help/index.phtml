@@ -77,6 +77,15 @@
         <a href="#" class="d-block text-center m-3">¿Quienes Somos?</a>
         <a href="#" class="d-block text-center m-3" id="btn_tutorial">Tutorial</a>
         <a href="#" class="d-block text-center m-3">Preguntas Frecuentes</a>
+
+        <?php echo $this->tag->linkTo([
+                'session/logout',
+                'Cerrar sesión',
+                'class' => 'd-block text-center m-3'
+        ])
+        ?>
+
+
         <div class="d-flex justify-content-center align-items-center">
             <img src="public/img/logos/polijic_big.png" width="200" class="img-fluid">
         </div>
@@ -96,7 +105,10 @@
 
 <script>
 $(document).ready(function () {
+
+  $("#SHOW_TOOLTIP").val('FALSE');
   $("#btn_tutorial").click(function () {
+    $("#SHOW_TOOLTIP").val('TRUE');
     new Tooltip().showDefault();
   });
 });

@@ -66,15 +66,21 @@ body {
 }
 
 .btn-primary,
-.btn-primary:hover {
+.btn-primary.active.focus,
+.btn-primary.active:focus,
+.btn-primary.active:hover,
+.btn-primary:active.focus,
+.btn-primary:active:focus,
+.btn-primary:active:hover,
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active,
+.btn-primary:hover{
   color: white !important;
   background-color: var(--poli-green-dark) !important;
   border-color: var(--poli-green-dark) !important;
 }
 
-.head-icon-search {
-  color: white;
-}
 
 
 .btn-app-default:hover{
@@ -95,3 +101,9 @@ body {
 
 
 
+
+.btn-poli:hover,
+.btn-poli {
+    background-color: var(--poli-green-dark) !important;
+    color: #fff;
+}
