@@ -6,24 +6,15 @@
 defined('BASE_PATH') || define('BASE_PATH', getenv('BASE_PATH') ?: realpath(dirname(__FILE__) . '/../..'));
 defined('APP_PATH') || define('APP_PATH', BASE_PATH . '/app');
 
-
-$stage = 'development';
-
-
-if($stage === 'production')
-    define('_APP_LOCAL_PATH_' , '/var/www/html/cooperemosapp/');
-else
-    define('_APP_LOCAL_PATH_' , 'C:/xampp/htdocs/cooperemosapp/');
-
-
+include 'env.php';
 
 return new \Phalcon\Config([
     'database' => [
         'adapter'     => 'Mysql',
-        'host'        => 'localhost',
-        'username'    => 'developer',
-        'password'    => 'developer',
-        'dbname'      => 'nicooperationdbv2',
+        'host'        =>  APP_DB_HOST,
+        'username'    =>  APP_DB_USER,
+        'password'    =>  APP_DB_PASSWORD,
+        'dbname'      =>  APP_DB_NAME,
         'charset'     => 'utf8',
     ],
     'application' => [
