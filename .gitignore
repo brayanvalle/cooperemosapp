@@ -6,4 +6,4 @@ app/config/env.php
 
 
 
-public/media/
+public/media/*
