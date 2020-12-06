@@ -3,3 +3,7 @@ cache
 app/library/vendor
 
 app/config/env.php
+
+
+
+public/media/
