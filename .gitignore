@@ -2,4 +2,6 @@ cache
 app/library/vendor
 
 env.php
+env.php.prod
+env.php.local
 public/media/*
