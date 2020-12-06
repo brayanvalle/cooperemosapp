@@ -1,0 +1,131 @@
+      
+ <?php echo $this->tag->hiddenField(["GAME_ID"]);?>
+
+<section class="my-3">
+    <div class="row">
+        <div class="col-md-6 col-lg-4">
+            <div class="card news-card">
+                <div class="card-body">
+                    <h4 class="card-title"><a><?php echo $game->Title ?></a></h4>
+                    <div class="content mt-2">
+                        <?php echo $game->Body ?>
+                    </div>                  
+                </div>               
+                <img class="card-img-top" src="<?php echo $game->BannerImageUrl; ?>" alt="Card image cap">             
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="card">
+  <div class="card-body">
+    Total participantes: <?php echo $game->ActiveUsers ?>
+    <button data-toggle="modal" data-target="#playGameModal" class="btn btn-app-default float-right d-block">Participar</button>
+  </div>
+</div>
+
+<section class="my-3">
+    <div class="row">
+        <div class="col-md-6 col-lg-4">
+            <div class="card news-card">
+                <div class="card-body">
+                <table class="table">
+                    <thead>
+                        <tr>
+                        <th scope="col">Usuario</th>
+                        <th scope="col">Fecha</th>
+                        <th scope="col">Respuesta</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php if(count($page->items) > 0){
+                                foreach($page->items as $element): ?>
+                                <tr>
+                                    <td><?php echo $element->IdentityUser->DisplayName ?></td>
+                                    <td><?php echo $element->Date ?></td>
+                                    <td><?php echo $element->Body ?></td>
+                                </tr>
+                        <?php endforeach; } ?>    
+                    </tbody>
+                    </table>               
+                </div>               
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<div class="modal fade" id="playGameModal" tabindex="-1" role="dialog" aria-labelledby="playGameModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="playGameModalLabel">Ingresa tu respuesta</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <?php echo $this->tag->form(["", "id" => "frmPlayGame" ,"autocomplete" => "off", "class" => "", "enctype" => "multipart/form-data"]); ?>
+
+            <div class="col-md-12">                    
+                <div class="form-group">
+                    <label for="objective" class="ni-required">Respuesta</label>
+                    <textarea class="form-control" id="objective" name="Body" rows="3" , required></textarea>
+                </div>
+            </div>
+
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label for="exampleFormControlSelect1" class="ni-required">Link externo</label>
+                    <?php echo $this->tag->textField(["ExternalLinkUrl", "id" => "ExternalLinkUrl" , "type" => "text","class" => "form-control"]) ?>   
+                </div>  
+            </div>
+
+            <div class="col-md-12">                    
+                <div class="form-group  mx-sm-3 mb-2">
+                    <label for="exampleFormControlInput1">Subir archivo</label>                        
+                    <input type="file" id="file" name="file" size="50" /> 
+                </div>
+            </div> 
+    
+        <?php echo $this->tag->endForm(); ?>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn" data-dismiss="modal">Cancelar</button>
+        <button type="button" id="sendGameAction" class="btn btn-poli d-block">Enviar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<?php echo $this->getContent(); ?>
+
+
+<script>
+  $(document).ready(function(){
+    const _APP_URL_ = $('#APP_URL').val();
+    const _GAME_ID_ = $('#GAME_ID').val();
+    const _endpoint = {
+        participate: 'plugins/gameParticipate/'
+    };
+
+    $('#sendGameAction').click(function(){
+        const form  = $('#frmPlayGame'); 
+        var form_data = new FormData(form[0]);
+
+        const request = doRequest({
+            url : _APP_URL_ + _endpoint.participate + _GAME_ID_,
+            data : form_data,
+            send_file : true
+        });
+
+        request.done(function(response){
+            window.location = _APP_URL_ + 'plugins/gameview/' + _GAME_ID_;
+        });
+        request.fail(function(e){
+           alert(e.responseText);
+        });
+    });
+  });
+</script>

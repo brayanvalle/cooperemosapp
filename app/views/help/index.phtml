@@ -1,0 +1,115 @@
+<style>
+    .card {
+        border-radius: 10px;
+        z-index: -1;
+    }
+
+    span.material-icons,
+    a {
+        color: var(--poli-green-dark);
+        margin: 0 5px;
+        vertical-align: middle;
+    }
+
+    a {
+        font-weight: bold;
+        letter-spacing: 0.5px;
+    }
+
+    .card-body {
+        padding: 10px;
+    }
+
+    .float {
+        position: fixed;
+        bottom: 15%;
+        right: 0;
+        z-index: 100;
+        color: var(--poli-green-dark);
+    }
+
+    .help>a>span.material-icons {
+        font-size: 4em;
+    }
+
+    p {
+        align-items: center;
+    }
+</style>
+<div class="help-container">
+    <div class="card m-2">
+        <div class="card-body">
+            <span class="material-icons">
+                phone_iphone
+            </span>
+            <p class="d-inline">(+57 4) 319 79 59</p>
+        </div>
+    </div>
+    <div class="card m-2">
+        <div class="card-body">
+            <span class="material-icons">
+                email
+            </span>
+            <p class=d-inline>cooperacion@elpoli.edu.co</p>
+        </div>
+    </div>
+    <div class="card m-2">
+        <div class="card-body">
+            <span class="material-icons">
+                location_on
+            </span>
+            <p class=d-inline>Carrera 48 # 7 - 151 - Sede Medellín</p>
+        </div>
+    </div>
+    <div class="card m-2">
+        <div class="card-body text-center">
+            <span class="material-icons float-left">
+                insert_invitation
+            </span>
+            <p class="d-inline">
+                Lunes a viernes 8:00 a.m a 12:00 pm. <br>
+                y de 1:30p.m a 5:30 p.m
+            </p>
+        </div>
+    </div>
+    <div class="help-questions m-4">
+        <p class="text-center">¿Tienes alguna duda?</p>
+        <a href="#" class="d-block text-center m-3">¿Quienes Somos?</a>
+        <a href="#" class="d-block text-center m-3" id="btn_tutorial">Tutorial</a>
+        <a href="#" class="d-block text-center m-3">Preguntas Frecuentes</a>
+
+        <?php echo $this->tag->linkTo([
+                'session/logout',
+                'Cerrar sesión',
+                'class' => 'd-block text-center m-3'
+        ])
+        ?>
+
+
+        <div class="d-flex justify-content-center align-items-center">
+            <img src="public/img/logos/polijic_big.png" width="200" class="img-fluid">
+        </div>
+    </div>
+    <div class="help">
+        <a href="#" class="float">
+            <span class="material-icons">
+                help
+            </span>
+        </a>
+    </div>
+    <div class="image-footer">
+        <img src="public/img/help.png" class="w-100">
+    </div>
+</div>
+
+
+<script>
+$(document).ready(function () {
+
+  $("#SHOW_TOOLTIP").val('FALSE');
+  $("#btn_tutorial").click(function () {
+    $("#SHOW_TOOLTIP").val('TRUE');
+    new Tooltip().showDefault();
+  });
+});
+</script>

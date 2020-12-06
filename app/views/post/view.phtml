@@ -1,0 +1,116 @@
+      
+<section class="my-3">
+    <div class="row">
+    <div class="col-md-6 col-lg-4">
+        <div class="card news-card">
+        <div class="card-body">
+            <div class="content post-feed-author">
+            <img class="rounded-circle post-avatar-img" src="<?php echo $post->IdentityUser->AvatarImageUrl?>">      
+
+            <div class="author-info">
+                <h5 class="author-name ml-2"><?php echo $post->IdentityUser->DisplayName ?></h5>
+                <span class="author-description ml-2" style="white-space:normal;"><?php echo $post->IdentityUser->DisplayInfo ?></span>
+                <p class="post-date ml-2">Hace 2 horas</p>
+            </div>                  
+            </div>
+
+            <strong><h5 class="mt-2"><?php echo $post->Title ?></h5></strong>
+            <div class="content mt-2">
+            <?php echo $post->Body ?>
+            </div>                  
+        </div>               
+        <img class="card-img-top" src="<?php echo $post->MainBannerImageUrl; ?>" alt="Card image cap">
+        <div class="card-body">                  
+            <div class="social-meta">
+            <!-- <p class="blue-text">#awesome #bboy #battle #breaking #cool</p> -->
+            <div class="social-counter float-right">
+                <i class="far fa-heart fa-lg post_like_btn" post-id=<?php echo $post->Id ?>><span class="ml-2" like-count=<?php echo $post->LikesCount ?> id="post_like_<?php echo $post->Id ?>"><?php echo $post->LikesCount ?></span></i>
+                <i class="far fa-share-square fa-lg ml-3" id="post_share_btn"  post-id=<?php echo $post->Id ?>><span class="ml-2"><?php echo $post->ShareCount ?></span></i>
+            </div>           
+            </div>
+        </div>                
+        </div>
+    </div>
+    </div>
+</section>
+
+
+<?php echo $this->getContent(); ?>
+
+
+<script>
+  $(document).ready(function(){
+    const _APP_URL_ = $('#APP_URL').val();
+
+    console.log(_APP_URL_);
+
+    
+    
+    const _endpoint = {
+      doLike: 'post/doLike/',
+      doShare: 'post/doShare/'
+    };
+
+    $('.post_like_btn').click(function(){
+      console.log("click");
+      const postId = $(this).attr('post-id');
+      doLike(postId, this);
+    });
+
+    $('#post_share_btn').click(function(){
+      const postId = $(this).attr('post-id');
+      doShare(postId);
+    });
+
+    function drawLikeAction(postId){      
+      const postLikeElement = $('#post_like_'+postId);
+      const postLikeCount = postLikeElement.attr('like-count');
+      const likeCount = parseInt(postLikeCount) + 1;
+      postLikeElement.html(likeCount);
+      postLikeElement.attr('like-count', likeCount);  
+    }
+
+    function drawDislikeAction(postId){      
+      const postLikeElement = $('#post_like_'+postId);
+      const postLikeCount = postLikeElement.attr('like-count');
+      const likeCount = parseInt(postLikeCount) - 1;
+      postLikeElement.html(likeCount);
+      postLikeElement.attr('like-count', likeCount);  
+    }
+
+    function doShare(postId){
+      if (navigator.share) {
+        navigator.share({
+          title: 'Cooperemos App',
+          text: 'Mira este post.',
+          url: `${_APP_URL_}post/view/${postId}`
+        })
+          .then(() => alert('Successful share'))
+          .catch((error) => alert('Error sharing', error));
+      }else{
+        alert('Not soported')
+      }
+
+      const request = doRequest({
+            url: _endpoint.doShare + postId
+        });
+      request.done(function(response){
+      });
+
+
+    }
+
+    function doLike(postId, el){
+        const request = doRequest({
+            url: _APP_URL_ + _endpoint.doLike + postId
+        });
+        request.done(function(response){
+          if(response.action === 'LIKE')
+            drawLikeAction(postId);
+          else
+            drawDislikeAction(postId);
+        });
+        
+    }
+  });
+</script>

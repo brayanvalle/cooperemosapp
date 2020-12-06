@@ -1,0 +1,94 @@
+<style>
+    .network-profile {
+        margin: 10px;
+    }
+
+    .btn-subscribe:hover,
+    .btn-subscribe {
+        background-color: var(--poli-green-dark) !important;
+        color: #fff;
+        font-size: 0.8em;
+        padding: 7px;
+        margin: 5px 0 0 0;
+    }
+
+    small {
+        font-size: 0.8em;
+    }
+
+    .network-profile hr {
+        width: 80%;
+        border: 1px solid #c7c7c7;
+    }
+
+</style>
+
+<div class="network-profile">
+    <div class="row">
+        <div class="col-2">
+            <img src="https://mdbootstrap.com/img/Photos/Avatars/img%20(31).jpg" class="rounded-circle" height="60">
+        </div>
+        <div class="col">
+            <h5 class="name m-0">Adriana Portocarrero</h5>
+            <small>Directora | Dirección Cooperación Nacional E Internacional</small>
+            <button class="btn btn-subscribe d-block" id="myNetwork_subscribe_btn_0">Subscribirme</button>
+        </div>
+    </div>
+    <hr>
+</div>
+
+<div class="network-profile">
+    <div class="row">
+        <div class="col-2">
+            <img src="https://mdbootstrap.com/img/Photos/Avatars/img%20(31).jpg" class="rounded-circle" height="60">
+        </div>
+        <div class="col">
+            <h5 class="name m-0">Docente demo</h5>
+            <small>Docente | Facultad de Ingeniería</small>
+            <button class="btn btn-subscribe d-block">Subscribirme</button>
+        </div>
+    </div>
+    <hr>
+</div>
+
+
+<div class="modal fade" id="confirmSubscriptionModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+  aria-hidden="true">
+
+  <!-- Add .modal-dialog-centered to .modal-dialog to vertically center the modal -->
+  <div class="modal-dialog modal-dialog-centered" role="document">
+
+
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Confirmar subscripción</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Al suscribirte verás en tu sección de noticias 
+        las publicaciones que comparta este usuario. Presiona <strong>Aceptar</strong>
+        para confirmar. O presionar <strong>Cancelar</strong> para cerrar este mensaje.
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-grey" data-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-primary">Aceptar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+    $(document).ready(function() {
+        new Tooltip().show({
+            type: 'myNetwork',
+            position: 1
+        });
+    });
+
+
+    $('.btn-subscribe').click(function(){
+        $('#confirmSubscriptionModal').modal('show');
+    });
+</script>

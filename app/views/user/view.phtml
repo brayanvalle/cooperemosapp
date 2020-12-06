@@ -1,0 +1,125 @@
+<style>
+    .profile h4 {
+        font-size: 1.5em;
+    }
+
+    .edit {
+        padding: 0 2px;
+    }
+
+    .edit-icon {
+        background: var(--poli-green-dark) !important;
+        color: #fff;
+        padding: 5px;
+    }
+
+    .info>p {
+        font-style: italic;
+    }
+
+    p,
+    h4 {
+        margin: 0;
+    }
+
+    .card:nth-of-type(n+2) {
+        margin: 10px;
+        border-radius: 10px;
+    }
+
+    .card-body {
+        padding: 10px;
+    }
+
+    .card-body>h4 {
+        font-size: 1.2em;
+        font-weight: bold !important;
+        color: #545353;
+    }
+</style>
+
+
+<div class="card profile" id="userProfileCard">
+    <div class="card-body p-2">
+        <div class="row">
+            <div class="col-4">
+                <img src="<?php echo $sessionUser['AvatarImageUrl'] ?>" class="rounded-circle" height="100">
+            </div>
+            <div class="col-8 info">
+                <h4 class="mb-2"><?php echo $user->Person->FullName ?></h4>
+                <p>Ingeniería Informática</p>
+                <p><?php echo $identityUser->IdentityRole->Name ?></p>
+                <p>Última Conexión: <?php echo $identityUser->LastConnectionDate ?></p>
+            </div>
+            <div class="col edit position-absolute">
+                <a href="#" class="float-right p-0">
+                    <span class="material-icons edit-icon">
+                        edit
+                    </span>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="card">
+    <div class="card-body">
+        <h4>Institución</h4>
+        <p><?php echo $personSchoolProgram->SchoolProgram->SchoolDepartment->Entity->Name ?></p>
+    </div>
+</div>
+<div class="card">
+    <div class="card-body">
+        <h4>Facultad</h4>
+        <p><?php echo $personSchoolProgram->SchoolProgram->SchoolDepartment->Name ?></p>
+    </div>
+</div>
+<div class="card">
+    <div class="card-body">
+        <h4>Programa Académico</h4>
+        <p><?php echo $personSchoolProgram->SchoolProgram->Name ?></p>
+    </div>
+</div>
+<div class="card">
+    <div class="card-body">
+        <h4>Edad</h4>
+        <?php $_age = floor((time() - strtotime($user->Person->BirthDate)) / 31556926); ?>
+        <p><?php echo $_age ?> años</p>
+    </div>
+</div>
+<div class="card">
+    <div class="card-body">
+        <h4>Correo Electrónico</h4>
+        <p><?php echo $user->Person->Email ?></p>
+    </div>
+</div>
+<div class="card">
+    <div class="card-body">
+        <h4>Celular</h4>
+        <p><?php echo $user->Person->PhoneNumber ?></p>
+    </div>
+</div>
+<div class="card">
+    <div class="card-body">
+        <h4>País</h4>
+        <p>Colombia</p>
+    </div>
+</div>
+<div class="card">
+    <div class="card-body">
+        <h4>Ciudad</h4>
+        <p>Medellín</p>
+    </div>
+</div>
+
+
+<?php echo $this->getContent() ?>
+
+
+<script>
+    $(document).ready(function() {
+        new Tooltip().show({
+            type: 'myProfile',
+            position: 1
+        });
+    });
+</script>

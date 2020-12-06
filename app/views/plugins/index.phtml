@@ -1,0 +1,62 @@
+<style>
+    span.material-icons {
+        color: var(--poli-green-dark);
+        font-size: 4em !important;
+        vertical-align: middle;
+    }
+
+    a {
+        font-size: 1em;
+    }
+
+    .card {
+        border: 2px solid #919191;
+    }
+</style>
+<div class="m-3">
+    <div class="row row-cols-2">
+        <div class="col">
+            <a href="#">
+                <div class="card" id="plugins_activities_btn">
+                    <div class="card-body p-2 text-center">
+                        <?php echo $this->tag->linkTo([
+                            'plugins/game',
+                            '<span class="material-icons">sports_esports</span>
+                            <p>Actividades</p>', 'id' => 'plugin_activities',
+                        ]) ?>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="col">
+            <a href="#">
+                <div class="card" id="plugins_myMovilities_btn">
+                    <div class="card-body p-2 text-center">
+                        <?php echo $this->tag->linkTo('plugins/mymobility',
+                        '<span class="material-icons">language</span>
+                        <p>Mis movilidades</p>')?>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="col mt-3">
+            <a href="#">
+                <div class="card" id="plugins_recomendations_btn">
+                    <div class="card-body p-2 text-center">
+                        <?php echo $this->tag->linkTo('plugins/networkandagreement',
+                        '<span class="material-icons">share</span>
+                        <p>Convenios y Redes</p>')?>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function() {
+        new Tooltip().show({
+            type: 'plugins',
+            position: 1
+        });
+    });
+</script>
