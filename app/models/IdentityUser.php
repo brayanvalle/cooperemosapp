@@ -1,7 +1,5 @@
 <?php
 
-
-
 class IdentityUser extends \Phalcon\Mvc\Model
 {
 

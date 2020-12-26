@@ -49,11 +49,11 @@
         
         <!-- Header Navbar -->
         <nav class="mb-5 navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar bg-primary">
-            <img class="navbar-brand rounded-circle" height="50" src="<?php echo $user['AvatarImageUrl'] ?>" data-holder-rendered="true">
+            <img class="navbar-brand rounded-circle" height="50" src="<?php echo $LoggedIdentityUser->AvatarImageUrl ?>" data-holder-rendered="true">
 
             <h6 style="color:white"><?php echo $user['Name'] ?></h6>
             <div class="navbar-nav ml-auto nav-flex-icons">
-                <i class="material-icons icon-small head-icon-search">search</i>
+                <i class="material-icons icon-small head-icon-search" style="color:white">search</i>
             </div>
         </nav>
 

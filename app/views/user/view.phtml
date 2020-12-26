@@ -43,24 +43,30 @@
     <div class="card-body p-2">
         <div class="row">
             <div class="col-4">
-                <img src="<?php echo $sessionUser['AvatarImageUrl'] ?>" class="rounded-circle" height="100">
+                <img src="<?php echo $identityUser->AvatarImageUrl?>" class="rounded-circle" height="100">
             </div>
             <div class="col-8 info">
                 <h4 class="mb-2"><?php echo $user->Person->FullName ?></h4>
                 <p>Ingeniería Informática</p>
                 <p><?php echo $identityUser->IdentityRole->Name ?></p>
                 <p>Última Conexión: <?php echo $identityUser->LastConnectionDate ?></p>
-            </div>
-            <div class="col edit position-absolute">
-                <a href="#" class="float-right p-0">
+            </div>   
+            <div class="col-md-12 edit">
+                <a href="#" class="float-right pr-3" data-toggle="modal" data-target="#basicExampleModal">
                     <span class="material-icons edit-icon">
                         edit
                     </span>
                 </a>
-            </div>
+            </div>    
         </div>
     </div>
+    
 </div>
+
+<div class="row">
+    
+</div>
+
 <div class="card">
     <div class="card-body">
         <h4>Institución</h4>
@@ -114,6 +120,48 @@
 
 <?php echo $this->getContent() ?>
 
+
+<!-- Modal -->
+<div class="modal fade" id="basicExampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Actualizar información</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form class="" action="#!">
+            <label>Primer nombre <label style="color:red">*</label></label>
+            <input type="text" id="firstName" class="form-control mb-4" >
+
+            <label>Segundo nombre</label>
+            <input type="text" id="secondaryName" class="form-control mb-4">
+
+            <label>Primer apellido <label style="color:red">*</label></label>
+            <input type="text" id="firstSurname" class="form-control mb-4" >
+
+            <label>Segundo apellido <label style="color:red">*</label></label>
+            <input type="text" id="secondarySurname" class="form-control mb-4" >
+
+            <label>Fecha de nacimiento <label style="color:red">*</label></label>
+            <input type="date" id="birthDate" class="form-control mb-4" >
+
+            <label>Celular</label>
+            <input type="text" id="phoneNumber" class="form-control mb-4" >
+            
+        </form>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-grey" data-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-poli" data-dismiss="modal">Guardar</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 <script>
     $(document).ready(function() {

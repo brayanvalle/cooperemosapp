@@ -105,5 +105,9 @@ class SessionController extends ControllerBase
         $user->save();
     }
 
+
+    public function signupAction(){
+        
+    }
 }
 

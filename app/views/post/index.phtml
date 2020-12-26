@@ -14,7 +14,7 @@
                 <div class="author-info">
                   <h5 class="author-name ml-2"><?php echo $post->IdentityUser->DisplayName ?></h5>
                   <span class="author-description ml-2" style="white-space:normal;"><?php echo $post->IdentityUser->DisplayInfo ?></span>
-                  <p class="post-date ml-2">Hace 2 horas</p>
+                  <p class="post-date ml-2">Hace 7 días</p>
                 </div>
               </div>
 
@@ -60,10 +60,8 @@
     };
 
     $('.post_like_btn').click(function() {
-      console.log("click");
       const postId = $(this).attr('post-id');
-      $(this).toggleClass('text-danger');
-
+      /*$(this).toggleClass('text-danger');*/
       doLike(postId);
     });
 
@@ -114,13 +112,11 @@
         url: _endpoint.doLike + postId
       });
 
-      console.log(request);
       request.done(function(response) {
-        console.log(response);
-        if (response.action === 'LIKE')
-          drawLikeAction(postId);
-        else
-          drawDislikeAction(postId);
+      if (response.action === 'LIKE')
+        drawLikeAction(postId);
+      else
+        drawDislikeAction(postId);
       });
 
       request.fail(function(e) {

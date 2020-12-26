@@ -12,7 +12,9 @@ class PostController extends ControllerBase
     public function indexAction()
     {
         $numberPage = 1;
-        $postEntries = PostEntry::find();
+        $postEntries = PostEntry::find([
+            'order' => 'PublicationDate DESC'
+        ]);
         $paginator = new Paginator([
             'data' => $postEntries,
             'limit'=> 10,
@@ -57,7 +59,8 @@ class PostController extends ControllerBase
 
             // find if like action exists
             $puiExists = PostUserInteraction::findFirst([
-                'conditions' => 'IdentityUserId = ' . $user['UserId'] . ' AND PostEntryId = ' . $postId 
+                'conditions' => 'IdentityUserId = ' . $user['UserId'] . ' AND PostEntryId = ' . $postId
+                
             ]);          
             
             if(!$puiExists){
